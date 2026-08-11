@@ -1,0 +1,1 @@
+--- deployment: tasks: - export DEPLOYPATH=/home/benitlzh/public_html/ - /bin/cp -R * $DEPLOYPATH - /bin/cp -R .htaccess $DEPLOYPATH - /bin/cp -R includes/.htaccess $DEPLOYPATH/includes/ - /bin/cp -R uploads/.htaccess $DEPLOYPATH/uploads/
