@@ -1,0 +1,19 @@
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "\.(sql|md|log|env)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Pretty URL: /news/some-article-slug -> article.php?slug=some-article-slug
+    RewriteRule ^news/([a-z0-9\-]+)/?$ article.php?slug=$1 [L,QSA]
+</IfModule>
