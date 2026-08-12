@@ -46,7 +46,7 @@ function nav_current(string $key, string $active): string
     <div class="shell nav__inner">
       <a class="brand" href="index.php" aria-label="The Royal Palace of Benin — home">
         <span class="brand__mark">
-          <img src="assets/images/anniversary-logo.jpg" alt="" width="40" height="40" />
+          <img src="assets/images/anniversary-logo-160.png" alt="" width="40" height="40" />
         </span>
         <span class="brand__text"><b>Royal Palace</b><span>of Benin</span></span>
       </a>
