@@ -1,0 +1,35 @@
+# User-uploaded content — ignore actual files, keep folder structure
+uploads/news/*
+!uploads/news/.htaccess
+!uploads/news/.gitkeep
+
+uploads/gallery/*
+!uploads/gallery/.htaccess
+!uploads/gallery/.gitkeep
+
+# Secrets
+secrets.php
+*.env
+.env
+.env.*
+
+# OS junk files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE folders
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and backups
+*.log
+*.bak
+*.orig
+
+# Dependency folders (not currently used, ignored preemptively)
+vendor/
+node_modules/
