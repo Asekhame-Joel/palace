@@ -380,21 +380,16 @@ h3 {
   align-items: center;
   gap: .85rem;
   color: var(--ivory);
+
 }
 
 .brand__mark {
-  width: 44px;
-  height: 44px;
-  flex: none;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--grad-gold);
-  color: var(--burgundy-900);
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, .18) inset;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .brand__text {
@@ -1677,6 +1672,7 @@ body.menu-open .drawer {
     scroll-behavior: auto;
   }
 }
+
 /* ---------------------------------------------------------------
  * Additive styles for dynamic Gallery: category filter + lightbox
  * (Appended — does not modify any existing rule above.)
@@ -1686,8 +1682,14 @@ body.menu-open .drawer {
   color: var(--ink, #1a1a1a);
   border-color: var(--gold, #b8935a);
 }
-.masonry figure[hidden] { display: none; }
-.masonry figure { cursor: zoom-in; }
+
+.masonry figure[hidden] {
+  display: none;
+}
+
+.masonry figure {
+  cursor: zoom-in;
+}
 
 .lightbox {
   position: fixed;
@@ -1699,25 +1701,32 @@ body.menu-open .drawer {
   background: rgba(10, 8, 6, 0.92);
   padding: 4vh 4vw;
 }
-.lightbox[hidden] { display: none; }
+
+.lightbox[hidden] {
+  display: none;
+}
+
 .lightbox figure {
   max-width: min(90vw, 1100px);
   max-height: 90vh;
   margin: 0;
   text-align: center;
 }
+
 .lightbox img {
   max-width: 100%;
   max-height: 80vh;
   object-fit: contain;
   border-radius: 4px;
 }
+
 .lightbox figcaption {
   color: #f2e9dc;
   margin-top: 1rem;
   font-family: inherit;
   letter-spacing: .02em;
 }
+
 .lightbox__close {
   position: absolute;
   top: 1.5rem;
@@ -1725,14 +1734,17 @@ body.menu-open .drawer {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.35);
+  border: 1px solid rgba(255, 255, 255, .35);
   background: transparent;
   color: #f2e9dc;
   font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
 }
-.lightbox__close:hover { background: rgba(255,255,255,.12); }
+
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, .12);
+}
 
 /* Contact form status message (AJAX submission) */
 .form__error {
@@ -1741,4 +1753,7 @@ body.menu-open .drawer {
   margin-top: .8rem;
   font-size: .95rem;
 }
-.form__error.show { display: block; }
+
+.form__error.show {
+  display: block;
+}

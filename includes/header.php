@@ -46,9 +46,13 @@ function nav_current(string $key, string $active): string
     <div class="shell nav__inner">
       <a class="brand" href="index.php" aria-label="The Royal Palace of Benin — home">
         <span class="brand__mark">
-          <img src="assets/images/logo.png" alt="" width="40" height="40" />
+          <img src="assets/images/logo.png" alt="Royal Palace of Benin" />
         </span>
-        <span class="brand__text"><b>Royal Palace</b><span>of Benin</span></span>
+
+        <span class="brand__text">
+          <b>Royal Palace</b>
+          <span>of Benin</span>
+        </span>
       </a>
       <nav class="nav__links" aria-label="Primary">
         <a href="index.php" <?php echo nav_current('home', $activeNav); ?>>Home</a>
