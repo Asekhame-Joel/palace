@@ -215,7 +215,7 @@ require __DIR__ . '/includes/header.php';
     <div style="margin-top:3rem">
 
       <article class="event reveal">
-        <div class="event__date">October 3<span>Saturday</span></div>
+        <div class="event__date">3rd October 2026<span>Saturday</span></div>
         <div>
           <h3>Cultural Festival</h3>
           <p class="event__venue">Benin City</p>
@@ -227,7 +227,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 4<span>Sunday</span></div>
+        <div class="event__date">4th October 2026<span>Sunday</span></div>
         <div>
           <h3>Durbar</h3>
           <p class="event__venue">Benin City</p>
@@ -238,7 +238,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 4<span>Sunday</span></div>
+        <div class="event__date">4th October 2026<span>Sunday</span></div>
         <div>
           <h3>Documentary Feature on Arise TV</h3>
           <p class="event__venue">Television Broadcast</p>
@@ -249,7 +249,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 7&ndash;10<span>Wednesday&ndash;Saturday</span></div>
+        <div class="event__date">7th &ndash; 10th October 2026<span>Wednesday &ndash; Saturday</span></div>
         <div>
           <h3>Chess &amp; Lawn Tennis Tournament</h3>
           <p class="event__venue">Sports Venues, Benin City</p>
@@ -260,7 +260,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 8&ndash;11<span>Thursday&ndash;Sunday</span></div>
+        <div class="event__date">8th &ndash; 11th October 2026<span>Thursday &ndash; Sunday</span></div>
         <div>
           <h3>Golf Tournament</h3>
           <p class="event__venue">Golf Course, Benin City</p>
@@ -272,7 +272,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 9<span>Friday</span></div>
+        <div class="event__date">9th October 2026<span>Friday</span></div>
         <div>
           <h3>Food Festival, Art Exhibition &amp; Trade Fair</h3>
           <p class="event__venue">Oba Akenzua Cultural Centre</p>
@@ -284,7 +284,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 10<span>Saturday</span></div>
+        <div class="event__date">10th October 2026<span>Saturday</span></div>
         <div>
           <h3>Oba Erediauwa Memorial Lecture</h3>
           <p class="event__venue">University of Benin / Cultural Centre</p>
@@ -296,7 +296,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 11<span>Sunday</span></div>
+        <div class="event__date">11th October 2026<span>Sunday</span></div>
         <div>
           <h3>Novelty Football Match &amp; Golf Tournament Finale</h3>
           <p class="event__venue">Samuel Ogbemudia Stadium</p>
@@ -308,7 +308,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 13<span>Tuesday</span></div>
+        <div class="event__date">13th October 2026<span>Tuesday</span></div>
         <div>
           <h3>Benin Economic Summit</h3>
           <p class="event__venue">Conference Hall, Benin City</p>
@@ -320,7 +320,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 14<span>Wednesday</span></div>
+        <div class="event__date">14th October 2026<span>Wednesday</span></div>
         <div>
           <h3>Children&rsquo;s Day</h3>
           <p class="event__venue">Cultural Centre</p>
@@ -331,7 +331,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 15<span>Thursday</span></div>
+        <div class="event__date">15th October 2026<span>Thursday</span></div>
         <div>
           <h3>Benin Security Summit</h3>
           <p class="event__venue">Conference Hall, Benin City</p>
@@ -342,7 +342,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 16<span>Friday</span></div>
+        <div class="event__date">16th October 2026<span>Friday</span></div>
         <div>
           <h3>Wrestling</h3>
           <p class="event__venue">Sports Arena, Benin City</p>
@@ -354,7 +354,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 18<span>Sunday</span></div>
+        <div class="event__date">18th October 2026<span>Sunday</span></div>
         <div>
           <h3>Football Match at the Stadium</h3>
           <p class="event__venue">Samuel Ogbemudia Stadium</p>
@@ -366,7 +366,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 19<span>Monday &middot; Proposed</span></div>
+        <div class="event__date">19th October 2026<span>Monday &middot; Proposed</span></div>
         <div>
           <h3>Exhibition of Artefacts by NCMM</h3>
           <p class="event__venue">National Commission for Museums and Monuments (NCMM)</p>
@@ -378,7 +378,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 20<span>Tuesday</span></div>
+        <div class="event__date">20th October 2026<span>Tuesday</span></div>
         <div>
           <h3>Grand Reception</h3>
           <p class="event__venue">Royal Palace / Festival Hall</p>
@@ -390,7 +390,7 @@ require __DIR__ . '/includes/header.php';
       </article>
 
       <article class="event reveal">
-        <div class="event__date">October 25<span>Sunday</span></div>
+        <div class="event__date">25th October 2026<span>Sunday</span></div>
         <div>
           <h3>Church Service</h3>
           <p class="event__venue">Holy Aruosa Cathedral / Major Churches</p>
@@ -404,7 +404,6 @@ require __DIR__ . '/includes/header.php';
     </div>
   </div>
 </section>
-
 
 <!-- IMPORTANT DATES -->
 <section class="section section--royal" id="dates">
