@@ -207,11 +207,13 @@ require __DIR__ . '/includes/header.php';
   <div class="shell">
     <div class="head reveal">
       <span class="eyebrow">Complete Event Schedule</span>
-      <h2>14 Days of Grand Celebration</h2>
-      <p class="lede">Fourteen spectacular days of celebrations featuring cultural festivals, sports tournaments,
-        lectures, exhibitions, and grand receptions across multiple venues in Benin City.</p>
+      <h2>October 2026 Programme</h2>
+      <p class="lede">A full month of celebrations marking the 10th Coronation Anniversary &mdash; cultural
+        festivals, sports tournaments, economic and security summits, lectures, exhibitions, and grand
+        receptions across multiple venues in Benin City.</p>
     </div>
     <div style="margin-top:3rem">
+
       <article class="event reveal">
         <div class="event__date">October 3<span>Saturday</span></div>
         <div>
@@ -223,27 +225,29 @@ require __DIR__ . '/includes/header.php';
               Display</span><span>Traditional Music</span><span>Celebrations</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 4<span>Sunday</span></div>
         <div>
-          <h3>Durbar Festival</h3>
+          <h3>Durbar</h3>
           <p class="event__venue">Benin City</p>
           <p>Grand Durbar celebration with royal procession, traditional ceremonies, and cultural displays.</p>
           <div class="tags"><span>Royal Procession</span><span>Traditional Ceremonies</span><span>Cultural
               Display</span><span>Royal Guards</span><span>Festivities</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 4<span>Sunday</span></div>
         <div>
-          <h3>Documentary: Arise TV / BBC / CNN</h3>
+          <h3>Documentary Feature on Arise TV</h3>
           <p class="event__venue">Television Broadcast</p>
-          <p>International broadcast collaboration with Arise TV, BBC History Channel, or CNN Inside Africa Program
-            showcasing the Oba&rsquo;s reign and the 10th Coronation Anniversary.</p>
-          <div class="tags"><span>International Broadcast</span><span>BBC History Channel</span><span>CNN Inside
-              Africa</span><span>Arise TV</span><span>Documentary</span></div>
+          <p>Broadcast feature on Arise TV showcasing the Oba&rsquo;s reign and the 10th Coronation Anniversary.</p>
+          <div class="tags"><span>Arise TV</span><span>Documentary</span><span>Broadcast Feature</span><span>Royal
+              Legacy</span><span>Media Coverage</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 7&ndash;10<span>Wednesday&ndash;Saturday</span></div>
         <div>
@@ -254,6 +258,7 @@ require __DIR__ . '/includes/header.php';
               Competitors</span><span>Sports Excellence</span><span>Awards</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 8&ndash;11<span>Thursday&ndash;Sunday</span></div>
         <div>
@@ -265,54 +270,81 @@ require __DIR__ . '/includes/header.php';
               Presentation</span><span>Awards Ceremony</span><span>Excellence</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 9<span>Friday</span></div>
         <div>
-          <h3>Food Festival</h3>
+          <h3>Food Festival, Art Exhibition &amp; Trade Fair</h3>
           <p class="event__venue">Oba Akenzua Cultural Centre</p>
-          <p>Celebration of Benin&rsquo;s culinary heritage featuring local cuisines, traditional dishes, and
-            contemporary Edo gastronomy.</p>
-          <div class="tags"><span>Local Cuisines</span><span>Traditional Dishes</span><span>Food
-              Vendors</span><span>Culinary Heritage</span><span>Tasting Events</span></div>
+          <p>Celebration of Benin&rsquo;s culinary and creative heritage, combining local cuisines and traditional
+            dishes with an art exhibition and trade fair showcasing local commerce and craftsmanship.</p>
+          <div class="tags"><span>Local Cuisines</span><span>Art Exhibition</span><span>Trade Fair</span><span>Culinary
+              Heritage</span><span>Local Commerce</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 10<span>Saturday</span></div>
         <div>
-          <h3>Lecture Series</h3>
+          <h3>Oba Erediauwa Memorial Lecture</h3>
           <p class="event__venue">University of Benin / Cultural Centre</p>
-          <p>Academic and cultural discourse on Edo heritage, kingdom history, achievements, and contemporary issues.
-          </p>
-          <div class="tags"><span>Academic Lectures</span><span>Heritage Discussions</span><span>Scholarly
+          <p>Memorial lecture in honour of Oba Erediauwa, featuring academic and cultural discourse on Edo heritage,
+            kingdom history, and contemporary issues.</p>
+          <div class="tags"><span>Memorial Lecture</span><span>Heritage Discussions</span><span>Scholarly
               Presentations</span><span>Cultural Insights</span><span>Q&amp;A Sessions</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 11<span>Sunday</span></div>
         <div>
-          <h3>Novelty Football Match &amp; Golf Finale</h3>
+          <h3>Novelty Football Match &amp; Golf Tournament Finale</h3>
           <p class="event__venue">Samuel Ogbemudia Stadium</p>
-          <p>Exciting novelty football match featuring local teams and personalities, combined with Golf Tournament
-            finale and trophy presentation.</p>
+          <p>Exciting novelty football match featuring local teams and personalities, combined with the Golf
+            Tournament finale and trophy presentation.</p>
           <div class="tags"><span>Football Match</span><span>Golf Trophy Presentation</span><span>Awards
               Ceremony</span><span>Entertainment</span><span>Celebration</span></div>
         </div>
       </article>
+
+      <article class="event reveal">
+        <div class="event__date">October 13<span>Tuesday</span></div>
+        <div>
+          <h3>Benin Economic Summit</h3>
+          <p class="event__venue">Conference Hall, Benin City</p>
+          <p>Summit bringing together investors, business leaders, and policymakers to discuss economic growth and
+            investment opportunities in Edo State.</p>
+          <div class="tags"><span>Economic Summit</span><span>Investment</span><span>Business Leaders</span><span>Policy
+              Dialogue</span><span>Panel Sessions</span></div>
+        </div>
+      </article>
+
       <article class="event reveal">
         <div class="event__date">October 14<span>Wednesday</span></div>
         <div>
-          <h3>Mentorship Programme</h3>
-          <p class="event__venue">Cultural Centre / Conference Hall</p>
-          <p>Mentorship initiative bringing together successful entrepreneurs, leaders, and youth for knowledge transfer
-            and career guidance.</p>
-          <div class="tags"><span>Mentorship</span><span>Youth Engagement</span><span>Leadership</span><span>Career
-              Guidance</span><span>Networking</span></div>
+          <h3>Children&rsquo;s Day</h3>
+          <p class="event__venue">Cultural Centre</p>
+          <p>A day dedicated to celebrating the children of the Benin Kingdom, featuring performances, games, and
+            activities for the youngest members of the community.</p>
+          <div class="tags"><span>Children&rsquo;s Day</span><span>Youth Celebration</span><span>Performances</span><span>Games</span><span>Community</span></div>
         </div>
       </article>
+
+      <article class="event reveal">
+        <div class="event__date">October 15<span>Thursday</span></div>
+        <div>
+          <h3>Benin Security Summit</h3>
+          <p class="event__venue">Conference Hall, Benin City</p>
+          <p>Summit convening security stakeholders and policymakers to address safety, security, and community
+            resilience across Edo State.</p>
+          <div class="tags"><span>Security Summit</span><span>Policy Dialogue</span><span>Community Safety</span><span>Stakeholders</span><span>Panel Sessions</span></div>
+        </div>
+      </article>
+
       <article class="event reveal">
         <div class="event__date">October 16<span>Friday</span></div>
         <div>
-          <h3>Wrestling Championship</h3>
+          <h3>Wrestling</h3>
           <p class="event__venue">Sports Arena, Benin City</p>
           <p>Traditional and contemporary wrestling competitions showcasing athletic prowess and Edo sporting heritage.
           </p>
@@ -320,21 +352,11 @@ require __DIR__ . '/includes/header.php';
               Competition</span><span>Championship</span><span>Awards</span></div>
         </div>
       </article>
-      <article class="event reveal">
-        <div class="event__date">October 17 or 19<span>Proposed</span></div>
-        <div>
-          <h3>Exhibition of Repatriated Artefacts</h3>
-          <p class="event__venue">National Commission for Museums and Monuments (NCMM)</p>
-          <p>Proposed exhibition showcasing the repatriated Benin Bronzes and other returned artefacts, celebrating the
-            successful repatriation campaign.</p>
-          <div class="tags"><span>Benin Bronzes</span><span>Repatriated Artefacts</span><span>Cultural
-              Heritage</span><span>NCMM Exhibition</span><span>Historical Significance</span></div>
-        </div>
-      </article>
+
       <article class="event reveal">
         <div class="event__date">October 18<span>Sunday</span></div>
         <div>
-          <h3>Football Match</h3>
+          <h3>Football Match at the Stadium</h3>
           <p class="event__venue">Samuel Ogbemudia Stadium</p>
           <p>Major football match at the stadium featuring local and regional teams in celebration of the coronation
             anniversary.</p>
@@ -342,6 +364,19 @@ require __DIR__ . '/includes/header.php';
               Entertainment</span><span>Community Gathering</span></div>
         </div>
       </article>
+
+      <article class="event reveal">
+        <div class="event__date">October 19<span>Monday &middot; Proposed</span></div>
+        <div>
+          <h3>Exhibition of Artefacts by NCMM</h3>
+          <p class="event__venue">National Commission for Museums and Monuments (NCMM)</p>
+          <p>Proposed exhibition showcasing the repatriated Benin Bronzes and other returned artefacts, celebrating the
+            successful repatriation campaign.</p>
+          <div class="tags"><span>Benin Bronzes</span><span>Repatriated Artefacts</span><span>Cultural
+              Heritage</span><span>NCMM Exhibition</span><span>Historical Significance</span></div>
+        </div>
+      </article>
+
       <article class="event reveal">
         <div class="event__date">October 20<span>Tuesday</span></div>
         <div>
@@ -353,10 +388,11 @@ require __DIR__ . '/includes/header.php';
               Guests</span><span>Royal Banquet</span><span>Celebrations</span></div>
         </div>
       </article>
+
       <article class="event reveal">
         <div class="event__date">October 25<span>Sunday</span></div>
         <div>
-          <h3>Thanksgiving Church Service</h3>
+          <h3>Church Service</h3>
           <p class="event__venue">Holy Aruosa Cathedral / Major Churches</p>
           <p>Closing thanksgiving service celebrating the successful 10th Coronation Anniversary and the Oba&rsquo;s
             reign with prayers and blessings.</p>
@@ -364,9 +400,11 @@ require __DIR__ . '/includes/header.php';
               Celebration</span><span>Blessings</span><span>Community Worship</span></div>
         </div>
       </article>
+
     </div>
   </div>
 </section>
+
 
 <!-- IMPORTANT DATES -->
 <section class="section section--royal" id="dates">
