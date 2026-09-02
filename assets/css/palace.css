@@ -943,6 +943,62 @@ body.menu-open .drawer {
   margin-top: 2rem;
 }
 
+.contact-side {
+  align-self: start;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact-card {
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.contact-card h3 {
+  margin: 1rem 0;
+}
+
+.contact-people {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.contact-person {
+  display: grid;
+  gap: .2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-person:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contact-person h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.contact-person__role {
+  color: var(--gold-500);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.contact-person a {
+  color: var(--ink-soft);
+  font-size: .9rem;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.contact-person a:hover {
+  color: var(--burgundy-700);
+}
+
 /* ---------- Timeline ---------- */
 .timeline {
   position: relative;

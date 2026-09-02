@@ -82,37 +82,56 @@ require __DIR__ . '/includes/header.php';
       </form>
     </div>
 
-    <div class="split__body reveal" data-d="1">
+    <div class="split__body contact-side reveal" data-d="1">
 
-      <div class="card" style="padding:2.2rem">
+      <div class="card contact-card">
         <span class="eyebrow">The Palace</span>
 
-        <h3 style="margin:1rem 0 1rem">
-          Royal Palace of Benin
-        </h3>
+        <h3>Royal Palace of Benin</h3>
 
         <ul class="infolist">
           <li>
-            <span>Benin City, Edo State, Nigeria</span>
+            <span>Oba Palace, Kings Square, Benin City</span>
           </li>
 
           <li>
             <span>info@beninroyalcourt.com</span>
           </li>
-
-          <li>
-            <span>+234 (0) XXX XXXX XXX</span>
-          </li>
         </ul>
       </div>
 
-      <div class="card" style="padding:2.2rem;margin-top:1.5rem">
+      <div class="card contact-card">
+        <span class="eyebrow">Enquiries</span>
+
+        <div class="contact-people">
+          <div class="contact-person">
+            <h4>His Excellency, Hon. Lucky Imasuen</h4>
+            <p class="contact-person__role">Chairman</p>
+            <a href="mailto:eghosa.imasuen@yahoo.com">eghosa.imasuen@yahoo.com</a>
+            <a href="tel:+2348030409997">+234 803 040 9997</a>
+          </div>
+
+          <div class="contact-person">
+            <h4>Osarenogae Hillary Igbinadolor</h4>
+            <p class="contact-person__role">Committee Secretary / SA to HRM</p>
+            <a href="mailto:hillarybarkley@gmail.com">hillarybarkley@gmail.com</a>
+            <a href="tel:+2348102462567">+234 810 246 2567</a>
+          </div>
+
+          <div class="contact-person">
+            <h4>Mr. Frank Irabor</h4>
+            <p class="contact-person__role">Secretary, Benin Traditional Council</p>
+            <a href="mailto:iraborfrank@gmail.com">iraborfrank@gmail.com</a>
+            <a href="tel:+2348131162616">+234 813 116 2616</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card contact-card">
 
         <span class="eyebrow">Anniversary Venues</span>
 
-        <h3 style="margin:1rem 0 1rem">
-          10th Coronation Anniversary
-        </h3>
+        <h3>10th Coronation Anniversary</h3>
 
         <ul class="infolist">
           <li>
