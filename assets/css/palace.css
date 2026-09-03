@@ -976,7 +976,8 @@ body.menu-open .drawer {
 
 .contact-person h4 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+  font-weight: 700;
   line-height: 1.2;
 }
 

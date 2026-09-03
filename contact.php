@@ -106,21 +106,21 @@ require __DIR__ . '/includes/header.php';
         <div class="contact-people">
           <div class="contact-person">
             <h4>His Excellency, Hon. Lucky Imasuen</h4>
-            <p class="contact-person__role">Chairman</p>
+            <h6 class="contact-person__role">Chairman</h6>
             <a href="mailto:eghosa.imasuen@yahoo.com">eghosa.imasuen@yahoo.com</a>
             <a href="tel:+2348030409997">+234 803 040 9997</a>
           </div>
 
           <div class="contact-person">
             <h4>Osarenogae Hillary Igbinadolor</h4>
-            <p class="contact-person__role">Committee Secretary / SA to HRM</p>
+            <j6 class="contact-person__role">Committee Secretary / SA to HRM</h6>
             <a href="mailto:hillarybarkley@gmail.com">hillarybarkley@gmail.com</a>
             <a href="tel:+2348102462567">+234 810 246 2567</a>
           </div>
 
           <div class="contact-person">
             <h4>Mr. Frank Irabor</h4>
-            <p class="contact-person__role">Secretary, Benin Traditional Council</p>
+            <h6 class="contact-person__role">Secretary, Benin Traditional Council</h6>
             <a href="mailto:iraborfrank@gmail.com">iraborfrank@gmail.com</a>
             <a href="tel:+2348131162616">+234 813 116 2616</a>
           </div>
