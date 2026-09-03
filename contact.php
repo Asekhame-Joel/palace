@@ -113,7 +113,7 @@ require __DIR__ . '/includes/header.php';
 
           <div class="contact-person">
             <h4>Osarenogae Hillary Igbinadolor</h4>
-            <j6 class="contact-person__role">Committee Secretary / SA to HRM</h6>
+            <h6 class="contact-person__role">Committee Secretary / SA to HRM</h6>
             <a href="mailto:hillarybarkley@gmail.com">hillarybarkley@gmail.com</a>
             <a href="tel:+2348102462567">+234 810 246 2567</a>
           </div>
