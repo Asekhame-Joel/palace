@@ -107,22 +107,22 @@ require __DIR__ . '/includes/header.php';
           <div class="contact-person">
             <h4>His Excellency, Hon. Lucky Imasuen</h4>
             <h6 class="contact-person__role">Chairman</h6>
-            <a href="mailto:eghosa.imasuen@yahoo.com">eghosa.imasuen@yahoo.com</a>
-            <a href="tel:+2348030409997">+234 803 040 9997</a>
+            <h6><a href="mailto:eghosa.imasuen@yahoo.com">eghosa.imasuen@yahoo.com</a></h6>
+            <h6><a href="tel:+2348030409997">+234 803 040 9997</a></h6>
           </div>
 
           <div class="contact-person">
             <h4>Osarenogae Hillary Igbinadolor</h4>
             <h6 class="contact-person__role">Committee Secretary / SA to HRM</h6>
-            <a href="mailto:hillarybarkley@gmail.com">hillarybarkley@gmail.com</a>
-            <a href="tel:+2348102462567">+234 810 246 2567</a>
+            <h6><a href="mailto:hillarybarkley@gmail.com">hillarybarkley@gmail.com</a></h6>
+            <h6><a href="tel:+2348102462567">+234 810 246 2567</a></h6>
           </div>
 
           <div class="contact-person">
             <h4>Mr. Frank Irabor</h4>
             <h6 class="contact-person__role">Secretary, Benin Traditional Council</h6>
-            <a href="mailto:iraborfrank@gmail.com">iraborfrank@gmail.com</a>
-            <a href="tel:+2348131162616">+234 813 116 2616</a>
+            <h6><a href="mailto:iraborfrank@gmail.com">iraborfrank@gmail.com</a></h6>
+            <h6><a href="tel:+2348131162616">+234 813 116 2616</a></h6>
           </div>
         </div>
       </div>
