@@ -110,13 +110,14 @@ require __DIR__ . '/includes/header.php';
             <h6><a href="mailto:eghosa.imasuen@yahoo.com">eghosa.imasuen@yahoo.com</a></h6>
             <h6><a href="tel:+2348030409997">+234 803 040 9997</a></h6>
           </div>
-
+<hr>
           <div class="contact-person">
             <h4>Osarenogae Hillary Igbinadolor</h4>
             <h6 class="contact-person__role">Committee Secretary / SA to HRM</h6>
             <h6><a href="mailto:hillarybarkley@gmail.com">hillarybarkley@gmail.com</a></h6>
             <h6><a href="tel:+2348102462567">+234 810 246 2567</a></h6>
           </div>
+<hr>
 
           <div class="contact-person">
             <h4>Mr. Frank Irabor</h4>
