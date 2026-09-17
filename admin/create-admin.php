@@ -6,7 +6,7 @@
  *   php admin/create-admin.php <username> <email> <password>
  *
  * Example:
- *   php admin/create-admin.php palaceadmin admin@obabenin.ng "A very strong password"
+ *   php admin/create-admin.php palaceadmin admin@obabenin.ng "password123"
  *
  * This must be run from the command line (SSH / terminal), not the browser.
  * It is intentionally blocked from running as a web request.

@@ -4,8 +4,9 @@
     <div class="footer__grid">
       <div>
         <a class="brand" href="index.php">
-          <span class="brand__mark" aria-hidden="true">B</span>
-          <span class="brand__text"><b>The Royal Palace of Benin</b><span>Living Heritage · Sacred
+ <span class="brand__mark">
+          <img src="assets/images/logo.png" alt="Royal Palace of Benin" />
+        </span>          <span class="brand__text"><b>The Royal Palace of Benin</b><span>Living Heritage · Sacred
               Tradition</span></span>
         </a>
         <p class="footer__quote">&ldquo;Where history lives, tradition is honoured, and the soul of a kingdom
