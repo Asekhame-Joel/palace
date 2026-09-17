@@ -75,20 +75,5 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 
-    <section class="section section--cream">
-      <div class="shell">
-        <div class="head reveal">
-          <span class="eyebrow">Anniversary Bulletin</span>
-          <h2>Latest Announcements</h2>
-          <p class="lede">Announcements published on the official 10th Coronation Anniversary platform.</p>
-        </div>
-        <div class="grid g2" style="margin-top:2.6rem">
-          <div class="notice reveal"><time>17 July 2026</time><h3>Test Announcement</h3><p>This is a test announcement for the coronation anniversary.</p></div>
-          <div class="notice reveal" data-d="1"><time>17 July 2026</time><h3>Test Announcement</h3><p>This is a test announcement for the coronation anniversary.</p></div>
-          <div class="notice reveal" data-d="2"><time>10 May 2026</time><h3>Test Announcement</h3><p>This is a test announcement for the coronation anniversary.</p></div>
-          <div class="notice reveal" data-d="3"><time>10 May 2026</time><h3>Test Announcement</h3><p>This is a test announcement for the coronation anniversary.</p></div>
-        </div>
-        <div class="btn-row" style="margin-top:2.4rem"><a class="btn btn--royal" href="anniversary.php">Full Anniversary Programme</a></div>
-      </div>
-    </section>
+  
 <?php require __DIR__ . '/includes/footer.php'; ?>
