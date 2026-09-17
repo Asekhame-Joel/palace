@@ -25,6 +25,7 @@ $values = [
     'title'        => $post['title'],
     'excerpt'      => $post['excerpt'] ?? '',
     'content'      => $post['content'],
+    'post_type'    => $post['post_type'] ?? 'standard',
     'category'     => $post['category'] ?? '',
     'author'       => $post['author'] ?? '',
     'status'       => $post['status'],
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $values['title']        = trim((string) ($_POST['title'] ?? ''));
     $values['excerpt']      = trim((string) ($_POST['excerpt'] ?? ''));
     $values['content']      = trim((string) ($_POST['content'] ?? ''));
+    $values['post_type']    = in_array(($_POST['post_type'] ?? 'text'), ['standard', 'text', 'image'], true) ? $_POST['post_type'] : 'text';
     $values['category']     = trim((string) ($_POST['category'] ?? ''));
     $values['author']       = trim((string) ($_POST['author'] ?? ''));
     $values['status']       = ($_POST['status'] ?? 'draft') === 'published' ? 'published' : 'draft';
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($values['title'] === '' || mb_strlen($values['title']) > 255) {
         $errors[] = 'Please enter a title (up to 255 characters).';
     }
-    if ($values['content'] === '') {
+    if ($values['post_type'] !== 'image' && $values['content'] === '') {
         $errors[] = 'Please enter the article content.';
     }
     if ($values['excerpt'] !== '' && mb_strlen($values['excerpt']) > 500) {
@@ -56,12 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $newImage = null;
-    if (!empty($_FILES['featured_image']['name'])) {
+    if ($values['post_type'] !== 'text' && !empty($_FILES['featured_image']['name'])) {
         try {
             $newImage = handle_image_upload($_FILES['featured_image'], UPLOADS_NEWS_PATH);
         } catch (RuntimeException $ex) {
             $errors[] = $ex->getMessage();
         }
+    }
+    if ($values['post_type'] === 'image' && $newImage === null && (!$post['featured_image'] || $removeImage)) {
+        $errors[] = 'Please upload an image for an image-only news post.';
     }
 
     if (empty($errors)) {
@@ -78,7 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $slug = make_unique_slug($values['title'], 'news', $id);
         }
 
-        $safeContent = strip_tags($values['content'], '<p><br><strong><b><em><i><ul><ol><li><a><h2><h3><h4><blockquote><img>');
+        $safeContent = $values['post_type'] !== 'image'
+            ? strip_tags($values['content'], '<p><br><strong><b><em><i><ul><ol><li><a><h2><h3><h4><blockquote>')
+            : '';
 
         $finalImage = $post['featured_image'];
         if ($newImage) {
@@ -88,9 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             delete_upload(UPLOADS_NEWS_PATH, $post['featured_image']);
             $finalImage = null;
         }
+        if ($values['post_type'] === 'text') {
+            $finalImage = null;
+        }
 
         $upd = db()->prepare('UPDATE news SET title=:title, slug=:slug, excerpt=:excerpt, content=:content,
-                               featured_image=:image, category=:category, author=:author, status=:status,
+                               featured_image=:image, post_type=:post_type, category=:category, author=:author, status=:status,
                                published_at=:published_at, updated_at=NOW() WHERE id=:id');
         $upd->execute([
             'title'        => $values['title'],
@@ -98,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'excerpt'      => $values['excerpt'] !== '' ? $values['excerpt'] : null,
             'content'      => $safeContent,
             'image'        => $finalImage,
+            'post_type'    => $values['post_type'],
             'category'     => $values['category'] !== '' ? $values['category'] : null,
             'author'       => $values['author'] !== '' ? $values['author'] : null,
             'status'       => $values['status'],
@@ -130,9 +141,20 @@ require __DIR__ . '/../../includes/admin_header.php';
               <textarea id="excerpt" name="excerpt" rows="2" maxlength="500"><?php echo e($values['excerpt']); ?></textarea>
             </div>
             <div class="a-field">
+              <label for="post_type">News Format</label>
+              <select id="post_type" name="post_type">
+                <option value="text" <?php echo $values['post_type'] === 'text' ? 'selected' : ''; ?>>Text only</option>
+                <option value="image" <?php echo $values['post_type'] === 'image' ? 'selected' : ''; ?>>Image only</option>
+<?php if (($post['post_type'] ?? 'standard') === 'standard'): ?>
+                <option value="standard" <?php echo $values['post_type'] === 'standard' ? 'selected' : ''; ?>>Image and text (existing layout)</option>
+<?php endif; ?>
+              </select>
+              <p class="hint">Choose whether the article displays written content or one complete, uncropped image.</p>
+            </div>
+            <div class="a-field" data-news-text-field>
               <label for="content">Article Content</label>
-              <textarea id="content" name="content" rows="12" required><?php echo e($values['content']); ?></textarea>
-              <p class="hint">Basic HTML tags are supported: &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;ul&gt;/&lt;li&gt;, &lt;h2&gt;-&lt;h4&gt;, &lt;a&gt;, &lt;img&gt;, &lt;blockquote&gt;.</p>
+              <textarea id="content" name="content" rows="12"><?php echo e($values['content']); ?></textarea>
+              <p class="hint">Basic HTML tags are supported: &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;ul&gt;/&lt;li&gt;, &lt;h2&gt;-&lt;h4&gt;, &lt;a&gt;, &lt;blockquote&gt;.</p>
             </div>
             <div class="a-form-grid">
               <div class="a-field">
@@ -160,8 +182,8 @@ require __DIR__ . '/../../includes/admin_header.php';
                 <input type="datetime-local" id="published_at" name="published_at" value="<?php echo e($values['published_at']); ?>">
               </div>
             </div>
-            <div class="a-field">
-              <label>Featured Image</label>
+            <div class="a-field" data-news-image-field>
+              <label>News Image</label>
 <?php if ($post['featured_image']): ?>
               <div class="a-current-image">
                 <img src="/<?php echo e(UPLOADS_NEWS_URL . '/' . $post['featured_image']); ?>" alt="">
@@ -171,10 +193,30 @@ require __DIR__ . '/../../includes/admin_header.php';
               </div>
 <?php endif; ?>
               <input type="file" id="featured_image" name="featured_image" accept="image/jpeg,image/png,image/webp,image/gif">
-              <p class="hint">Upload a new image to replace the current one. Max 5MB.</p>
+              <p class="hint">Upload a new image to replace the current one. The full image is centered without cropping. Max 5MB.</p>
             </div>
             <button class="a-btn" type="submit">Save Changes</button>
             <a class="a-btn outline" href="/admin/news/index.php">Cancel</a>
           </form>
+          <script>
+            (() => {
+              const type = document.getElementById('post_type');
+              const textField = document.querySelector('[data-news-text-field]');
+              const imageField = document.querySelector('[data-news-image-field]');
+              const content = document.getElementById('content');
+              const image = document.getElementById('featured_image');
+              const hasCurrentImage = <?php echo $post['featured_image'] ? 'true' : 'false'; ?>;
+              const update = () => {
+                const imageOnly = type.value === 'image';
+                const standard = type.value === 'standard';
+                textField.hidden = imageOnly;
+                imageField.hidden = !imageOnly && !standard;
+                content.required = !imageOnly;
+                image.required = imageOnly && !hasCurrentImage;
+              };
+              type.addEventListener('change', update);
+              update();
+            })();
+          </script>
         </div>
 <?php require __DIR__ . '/../../includes/admin_footer.php'; ?>

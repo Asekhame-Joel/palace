@@ -34,13 +34,15 @@ if (!$post) {
     exit;
 }
 
-$featuredImageUrl = $post['featured_image']
+$isImageOnly = ($post['post_type'] ?? 'standard') === 'image';
+$isTextOnly = ($post['post_type'] ?? 'standard') === 'text';
+$featuredImageUrl = $post['featured_image'] && !$isTextOnly && !$isImageOnly
     ? UPLOADS_NEWS_URL . '/' . $post['featured_image']
     : 'assets/images/anniversary.jpg';
 
 $pageTitle       = $post['title'] . ' — The Royal Palace of Benin';
 $pageDescription = $post['excerpt'] ?: excerpt_from_text($post['content'], 30);
-$ogImage         = $featuredImageUrl;
+$ogImage         = $post['featured_image'] ? UPLOADS_NEWS_URL . '/' . $post['featured_image'] : $featuredImageUrl;
 $activeNav       = 'news';
 
 // Related/recent news (excluding current)
@@ -67,7 +69,13 @@ require __DIR__ . '/includes/header.php';
     <section class="section">
       <div class="shell" style="max-width:780px">
         <div class="reveal" style="font-size:1.08rem;line-height:1.85;color:var(--ink-70,#3a3a3a)">
+<?php if ($isImageOnly && $post['featured_image']): ?>
+          <figure class="article-image-only">
+            <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $post['featured_image']); ?>" alt="<?php echo e($post['title']); ?>">
+          </figure>
+<?php else: ?>
           <?php echo $post['content']; /* stored as sanitized HTML from the admin editor */ ?>
+<?php endif; ?>
         </div>
         <div class="btn-row" style="margin-top:2.6rem"><a class="btn btn--outline" href="news.php">&larr; Back to All News</a></div>
       </div>

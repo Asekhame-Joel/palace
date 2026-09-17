@@ -16,7 +16,7 @@ $offset = ($page - 1) * $perPage;
 $total = (int) db()->query("SELECT COUNT(*) FROM news WHERE status = 'published' AND published_at <= NOW()")->fetchColumn();
 $totalPages = max(1, (int) ceil($total / $perPage));
 
-$stmt = db()->prepare("SELECT id, title, slug, excerpt, featured_image, category, published_at
+$stmt = db()->prepare("SELECT id, title, slug, excerpt, featured_image, post_type, category, published_at
                         FROM news
                         WHERE status = 'published' AND published_at <= NOW()
                         ORDER BY published_at DESC
@@ -48,6 +48,11 @@ require __DIR__ . '/includes/header.php';
         <div class="grid g3">
 <?php foreach ($posts as $i => $post): ?>
           <article class="card reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?>>
+<?php if (($post['post_type'] ?? 'standard') === 'image' && $post['featured_image']): ?>
+            <a class="news-card__image" href="article.php?slug=<?php echo urlencode($post['slug']); ?>">
+              <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $post['featured_image']); ?>" alt="<?php echo e($post['title']); ?>" loading="lazy">
+            </a>
+<?php endif; ?>
             <span class="card__num"><?php echo e($post['category'] ?: 'Palace News'); ?> &middot; <?php echo e(format_date($post['published_at'])); ?></span>
             <h3><?php echo e($post['title']); ?></h3>
             <p><?php echo e($post['excerpt'] ?: excerpt_from_text($post['title'], 20)); ?></p>

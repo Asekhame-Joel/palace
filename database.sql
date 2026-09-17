@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS news (
     excerpt        VARCHAR(500) DEFAULT NULL,
     content        MEDIUMTEXT NOT NULL,
     featured_image VARCHAR(255) DEFAULT NULL,
+    post_type      ENUM('standard','text','image') NOT NULL DEFAULT 'standard',
     category       VARCHAR(100) DEFAULT NULL,
     author         VARCHAR(150) DEFAULT NULL,
     status         ENUM('draft','published') NOT NULL DEFAULT 'draft',

@@ -27,6 +27,10 @@ those spots will show broken images.
 2. Import `database.sql` into that database (phpMyAdmin → Import, or
    `mysql -u USER -p DBNAME < database.sql`).
 
+For an existing installation, import each new file in `migrations/` once,
+in filename order. The image-only/text-only news update requires
+`migrations/2026-09-16-news-post-type.sql`.
+
 ## 3. Configuration
 
 Open `includes/config.php` and set your real database credentials, or
