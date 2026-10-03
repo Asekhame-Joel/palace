@@ -31,6 +31,11 @@ For an existing installation, import each new file in `migrations/` once,
 in filename order. The image-only/text-only news update requires
 `migrations/2026-09-16-news-post-type.sql`.
 
+The linked YouTube gallery requires
+`migrations/2026-10-03-gallery-youtube-videos.sql`. After importing it, add
+video links from **Admin → Gallery → YouTube Videos**; thumbnails are loaded
+automatically from YouTube and video files are never uploaded to the site.
+
 ## 3. Configuration
 
 Open `includes/config.php` and set your real database credentials, or

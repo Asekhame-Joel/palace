@@ -58,7 +58,7 @@
     }, { passive: true });
   }
 
-  /* Anniversary countdown — 3 October 2026, opening day of the celebration */
+  /* Anniversary countdown - 4 October 2026, opening day of the official programme */
   var cd = document.querySelector("[data-countdown]");
   if (cd) {
     var target = new Date(cd.getAttribute("data-countdown")).getTime();

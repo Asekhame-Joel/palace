@@ -11,6 +11,9 @@ $activeNav       = 'gallery';
 $images = db()->query("SELECT id, title, description, image, category FROM gallery
                         WHERE status = 'active' ORDER BY created_at DESC")->fetchAll();
 
+$videos = db()->query("SELECT title, youtube_id, youtube_url FROM gallery_videos
+                        WHERE status = 'active' ORDER BY created_at DESC")->fetchAll();
+
 $categories = [];
 foreach ($images as $img) {
     if (!empty($img['category']) && !in_array($img['category'], $categories, true)) {
@@ -55,6 +58,36 @@ require __DIR__ . '/includes/header.php';
 <?php endif; ?>
       </div>
     </section>
+
+<?php if (!empty($videos)): ?>
+    <section class="section gallery-videos">
+      <div class="shell">
+        <div class="gallery-videos__head reveal">
+          <div>
+            <span class="eyebrow">Palace on Film</span>
+            <h2>Watch Our Stories</h2>
+          </div>
+          <p class="lede">Royal ceremonies, heritage, reports, and memorable moments from the Benin Kingdom.</p>
+        </div>
+        <div class="video-grid">
+<?php foreach ($videos as $i => $video): ?>
+          <a class="video-card reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?> href="<?php echo e($video['youtube_url']); ?>" target="_blank" rel="noopener noreferrer" aria-label="Watch <?php echo e($video['title']); ?> on YouTube">
+            <span class="video-card__media">
+              <img src="https://i.ytimg.com/vi/<?php echo e($video['youtube_id']); ?>/hqdefault.jpg" alt="<?php echo e($video['title']); ?>" loading="lazy">
+              <span class="video-card__play" aria-hidden="true"><span></span></span>
+              <span class="video-card__source">YouTube</span>
+            </span>
+            <span class="video-card__body">
+              <span class="video-card__label">Royal Palace Video</span>
+              <strong><?php echo e($video['title']); ?></strong>
+              <span class="video-card__watch">Watch on YouTube <span aria-hidden="true">&#8599;</span></span>
+            </span>
+          </a>
+<?php endforeach; ?>
+        </div>
+      </div>
+    </section>
+<?php endif; ?>
 
     <div class="lightbox" id="lightbox" data-lightbox-root hidden>
       <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close">&times;</button>

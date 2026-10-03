@@ -199,3 +199,29 @@ function delete_upload(string $dir, ?string $filename): void
         @unlink($path);
     }
 }
+
+/** Extract a YouTube video ID from a standard, shortened, Shorts, live, or embed URL. */
+function youtube_video_id(string $url): ?string
+{
+    $url = trim($url);
+    $parts = parse_url($url);
+    if (!$parts || empty($parts['host'])) {
+        return null;
+    }
+
+    $host = strtolower(preg_replace('/^www\./', '', $parts['host']));
+    $id = null;
+
+    if ($host === 'youtu.be') {
+        $id = trim($parts['path'] ?? '', '/');
+    } elseif ($host === 'youtube.com' || str_ends_with($host, '.youtube.com')) {
+        parse_str($parts['query'] ?? '', $query);
+        if (!empty($query['v'])) {
+            $id = (string) $query['v'];
+        } elseif (preg_match('~^/(?:shorts|embed|live)/([^/?]+)~', $parts['path'] ?? '', $match)) {
+            $id = $match[1];
+        }
+    }
+
+    return $id && preg_match('/^[A-Za-z0-9_-]{11}$/', $id) ? $id : null;
+}

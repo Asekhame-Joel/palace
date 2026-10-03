@@ -75,5 +75,17 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 
-  
+    <section class="section section--cream">
+      <div class="shell">
+        <div class="head head--center reveal">
+          <span class="eyebrow eyebrow--center">10th Coronation Anniversary</span>
+          <h2>Official Programme of Events</h2>
+          <p class="lede" style="margin-inline:auto">View the complete official programme for the anniversary celebrations across Benin City.</p>
+          <div class="btn-row" style="justify-content:center;margin-top:2rem">
+            <a class="btn btn--royal" href="anniversary.php#programme">View Full Programme</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
 <?php require __DIR__ . '/includes/footer.php'; ?>

@@ -72,13 +72,13 @@ require __DIR__ . '/includes/header.php';
   <div class="shell">
     <div class="anniv-grid">
       <div class="reveal">
-        <span class="eyebrow">3 &ndash; 25 October 2026 &middot; Benin City</span>
+        <span class="eyebrow">4 October &ndash; 21 November 2026 &middot; Benin City</span>
         <h2 style="margin:1.1rem 0 1rem">10th Coronation <span class="gold-text">Anniversary</span></h2>
         <div class="rule"></div>
         <p class="lede">Celebrating a decade of restoration, culture, and calm under the reign of His Royal Majesty
           Omo N&rsquo;Oba N&rsquo;Edo Uku Akpolokpolo, Ewuare II, CFR, 40th Oba of Benin Kingdom.</p>
         <p class="royal-quote" style="margin-top:1.4rem">&ldquo;Oba ghato kpere, Ise!!!&rdquo;</p>
-        <div class="countdown" data-countdown="2026-10-03T00:00:00">
+        <div class="countdown" data-countdown="2026-10-04T00:00:00">
           <div><b>00</b><span>Days</span></div>
           <div><b>00</b><span>Hours</span></div>
           <div><b>00</b><span>Minutes</span></div>
@@ -95,8 +95,8 @@ require __DIR__ . '/includes/header.php';
       </div>
     </div>
     <div class="stats reveal" style="margin-top:4rem">
-      <div><b data-count="14">14</b><span>Major Events</span></div>
-      <div><b data-count="23">23</b><span>Days of Celebration</span></div>
+      <div><b data-count="13">13</b><span>Official Programme Entries</span></div>
+      <div><b data-count="2">2</b><span>Months of Celebration</span></div>
       <div><b data-count="119">119</b><span>Artefacts Returned, 2025</span></div>
       <div><b data-count="800" data-suffix="+">800+</b><span>Years of Tradition</span></div>
     </div>
@@ -310,8 +310,8 @@ require __DIR__ . '/includes/header.php';
   <div class="shell">
     <span class="eyebrow eyebrow--center reveal">Join the Celebration</span>
     <h2 class="reveal" style="margin:1.2rem 0 1rem">A Kingdom Invites the World</h2>
-    <p class="lede reveal" style="margin-inline:auto">Fourteen major events across Benin City between 3 and 25
-      October 2026 mark a decade of the reign of Oba Ewuare II. Explore the programme and be part of the
+    <p class="lede reveal" style="margin-inline:auto">The official programme runs across Benin City from 4 October to
+      21 November 2026, marking a decade of the reign of Oba Ewuare II. Explore the programme and be part of the
       celebration.</p>
     <div class="btn-row reveal" style="justify-content:center;margin-top:2.2rem">
       <a class="btn btn--gold" href="anniversary.php">Explore Anniversary</a>

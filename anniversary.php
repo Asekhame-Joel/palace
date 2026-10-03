@@ -4,7 +4,7 @@ require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
 $pageTitle = '10th Coronation Anniversary of Oba Ewuare II — The Royal Palace of Benin';
-$pageDescription = 'October 3-25, 2026: the 10th Coronation Anniversary of His Royal Majesty Oba Ewuare II, CFR. Full programme of 14 events, a decade of achievement, and Edo cultural heritage.';
+$pageDescription = 'October 4-November 21, 2026: the official programme of events for the 10th Coronation Anniversary of His Royal Majesty Oba Ewuare II, CFR.';
 $ogImage = 'assets/images/anniversary-logo.jpg';
 $activeNav = 'anniversary';
 
@@ -17,13 +17,13 @@ require __DIR__ . '/includes/header.php';
   <div class="shell hero__inner">
     <div class="anniv-grid" style="align-items:center">
       <div>
-        <span class="eyebrow">October 3 &ndash; 25, 2026 &middot; Benin City</span>
+        <span class="eyebrow">October 4 &ndash; November 21, 2026 &middot; Benin City</span>
         <h1 style="margin:1.3rem 0 1.3rem">10th Coronation<em class="gold-text">Anniversary</em></h1>
         <p class="lede">Celebrating a decade of restoration, culture, and calm under the reign of His Royal Majesty
           <strong>Omo N&rsquo;Oba N&rsquo;Edo Uku Akpolokpolo, Ewuare II, CFR</strong> — 40th Oba of Benin Kingdom.
         </p>
         <p class="royal-quote" style="margin-top:1.5rem">&ldquo;Oba ghato kpere, Ise!!!&rdquo;</p>
-        <div class="countdown" data-countdown="2026-10-03T00:00:00">
+        <div class="countdown" data-countdown="2026-10-04T00:00:00">
           <div><b>00</b><span>Days</span></div>
           <div><b>00</b><span>Hours</span></div>
           <div><b>00</b><span>Minutes</span></div>
@@ -203,204 +203,69 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <!-- PROGRAMME -->
-<section class="section" id="programme">
+<section class="section programme" id="programme">
   <div class="shell">
-    <div class="head reveal">
-      <span class="eyebrow">Complete Event Schedule</span>
-      <h2>October 2026 Programme</h2>
-      <p class="lede">A full month of celebrations marking the 10th Coronation Anniversary &mdash; cultural
-        festivals, sports tournaments, economic and security summits, lectures, exhibitions, and grand
-        receptions across multiple venues in Benin City.</p>
+    <div class="programme-intro reveal">
+      <div>
+        <span class="eyebrow">Official Programme of Events 2026</span>
+        <h2>Two Months of Royal Celebration</h2>
+      </div>
+      <p class="lede">The official 10th Coronation Anniversary programme brings together media, culture, sport, heritage and royal celebration across Benin City.</p>
     </div>
-    <div style="margin-top:3rem">
 
+    <div class="programme-grid">
       <article class="event reveal">
-        <div class="event__date">3rd October 2026<span>Saturday</span></div>
-        <div>
-          <h3>Cultural Festival</h3>
-          <p class="event__venue">Benin City</p>
-          <p>Opening celebration of the 10th Coronation Anniversary featuring traditional Edo cultural performances,
-            masquerades, and heritage displays.</p>
-          <div class="tags"><span>Cultural Performances</span><span>Masquerades</span><span>Heritage
-              Display</span><span>Traditional Music</span><span>Celebrations</span></div>
-        </div>
+        <div class="event__date"><strong>04</strong><span>Sunday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">01</span><h3>Airing of the Coronation Compendium</h3><p class="event__venue">Mainstream Media &amp; Social Media Platforms</p></div>
       </article>
-
+      <article class="event reveal" data-d="1">
+        <div class="event__date"><strong>05</strong><span>Monday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">02</span><h3>Airing of the Official 10th Coronation Anniversary Documentary (Parts A &amp; B) Commences</h3><p class="event__venue">Mainstream Media &amp; Social Media Platforms</p></div>
+      </article>
       <article class="event reveal">
-        <div class="event__date">4th October 2026<span>Sunday</span></div>
-        <div>
-          <h3>Durbar</h3>
-          <p class="event__venue">Benin City</p>
-          <p>Grand Durbar celebration with royal procession, traditional ceremonies, and cultural displays.</p>
-          <div class="tags"><span>Royal Procession</span><span>Traditional Ceremonies</span><span>Cultural
-              Display</span><span>Royal Guards</span><span>Festivities</span></div>
-        </div>
+        <div class="event__date"><strong>09</strong><span>Friday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">03</span><h3>Food Festival, Art &amp; Photo Exhibition, Trade Fair, Skills Acquisition, and Luncheon</h3><p class="event__venue">Oba Akenzua Cultural Center</p></div>
       </article>
-
+      <article class="event reveal" data-d="1">
+        <div class="event__date"><strong>10</strong><span>Saturday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">04</span><h3>Cultural Festival, Luncheon</h3><p class="event__venue">Kick off at Oba Akenzua Scout Center</p></div>
+      </article>
       <article class="event reveal">
-        <div class="event__date">4th October 2026<span>Sunday</span></div>
-        <div>
-          <h3>Documentary Feature on Arise TV</h3>
-          <p class="event__venue">Television Broadcast</p>
-          <p>Broadcast feature on Arise TV showcasing the Oba&rsquo;s reign and the 10th Coronation Anniversary.</p>
-          <div class="tags"><span>Arise TV</span><span>Documentary</span><span>Broadcast Feature</span><span>Royal
-              Legacy</span><span>Media Coverage</span></div>
-        </div>
+        <div class="event__date"><strong>11</strong><span>Sunday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">05</span><h3>Novelty Football Match, Luncheon</h3><p class="event__venue">Samuel Ogbemudia Stadium</p></div>
       </article>
-
+      <article class="event reveal" data-d="1">
+        <div class="event__date"><strong>12</strong><span>Monday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">06</span><h3>Oba Erediauwa Memorial Lecture, Luncheon</h3><p class="event__venue">Akin Deko Main Auditorium, University of Benin</p></div>
+      </article>
       <article class="event reveal">
-        <div class="event__date">7th &ndash; 10th October 2026<span>Wednesday &ndash; Saturday</span></div>
-        <div>
-          <h3>Chess &amp; Lawn Tennis Tournament</h3>
-          <p class="event__venue">Sports Venues, Benin City</p>
-          <p>Four-day international chess and lawn tennis tournament featuring local and international competitors.</p>
-          <div class="tags"><span>Chess Tournament</span><span>Lawn Tennis</span><span>International
-              Competitors</span><span>Sports Excellence</span><span>Awards</span></div>
-        </div>
+        <div class="event__date"><strong>16</strong><span>Friday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">07</span><h3>Wrestling/Palace Football Match, Luncheon</h3><p class="event__venue">Oba Palace Grounds</p></div>
       </article>
-
+      <article class="event reveal" data-d="1">
+        <div class="event__date"><strong>17</strong><span>Saturday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">08</span><h3>Chess Tournament (Sir Victor Uwaifo Creative Hub), Children's Day (Oba Akenzua Cultural Center), Luncheon</h3><p class="event__venue">Sir Victor Uwaifo Creative Hub / Oba Akenzua Cultural Center</p></div>
+      </article>
+      <article class="event event--featured reveal">
+        <div class="event__date"><strong>20</strong><span>Tuesday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">09</span><h3>Daytime/Evening: Official Commissioning of the Festival Hall, Thanksgiving, Reception of Traditional Rulers of Benin Extraction, Luncheon, Cultural Evening, and Fireworks</h3><p class="event__venue">Holy Aruosa Cathedral &amp; Palace Grounds</p><div class="event__night"><b>Night (6:00 PM)</b><p>music festival featuring Shallipopi as guest artist.</p><span>UNIBEN Sports Complex</span></div></div>
+      </article>
+      <article class="event reveal" data-d="1">
+        <div class="event__date"><strong>24</strong><span>Saturday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">10</span><h3>Durbar, Luncheon</h3><p class="event__venue">Garrick Memorial School Ground</p></div>
+      </article>
       <article class="event reveal">
-        <div class="event__date">8th &ndash; 11th October 2026<span>Thursday &ndash; Sunday</span></div>
-        <div>
-          <h3>Golf Tournament</h3>
-          <p class="event__venue">Golf Course, Benin City</p>
-          <p>Four-day international golf tournament culminating in trophy presentation and awards ceremony on October
-            11.</p>
-          <div class="tags"><span>Golf Tournament</span><span>International Players</span><span>Trophy
-              Presentation</span><span>Awards Ceremony</span><span>Excellence</span></div>
-        </div>
+        <div class="event__date event__date--range"><strong>27-31</strong><span>Tue - Sat<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">11</span><h3>Golf Tournament, Luncheon</h3><p class="event__venue">Benin Golf Club</p></div>
       </article>
-
-      <article class="event reveal">
-        <div class="event__date">9th October 2026<span>Friday</span></div>
-        <div>
-          <h3>Food Festival, Art Exhibition &amp; Trade Fair</h3>
-          <p class="event__venue">Oba Akenzua Cultural Centre</p>
-          <p>Celebration of Benin&rsquo;s culinary and creative heritage, combining local cuisines and traditional
-            dishes with an art exhibition and trade fair showcasing local commerce and craftsmanship.</p>
-          <div class="tags"><span>Local Cuisines</span><span>Art Exhibition</span><span>Trade Fair</span><span>Culinary
-              Heritage</span><span>Local Commerce</span></div>
-        </div>
+      <article class="event event--wide reveal" data-d="1">
+        <div class="event__date event__date--range"><strong>19-21</strong><span>Thu - Sat<br>November 2026</span></div>
+        <div class="event__body"><span class="event__index">12</span><h3>Exhibition of Artefacts by NCMM, Luncheon</h3><p class="event__venue">National Museum Ground, King's Square, Benin City</p></div>
       </article>
-
-      <article class="event reveal">
-        <div class="event__date">10th October 2026<span>Saturday</span></div>
-        <div>
-          <h3>Oba Erediauwa Memorial Lecture</h3>
-          <p class="event__venue">University of Benin / Cultural Centre</p>
-          <p>Memorial lecture in honour of Oba Erediauwa, featuring academic and cultural discourse on Edo heritage,
-            kingdom history, and contemporary issues.</p>
-          <div class="tags"><span>Memorial Lecture</span><span>Heritage Discussions</span><span>Scholarly
-              Presentations</span><span>Cultural Insights</span><span>Q&amp;A Sessions</span></div>
-        </div>
+      <article class="event event--finale reveal">
+        <div class="event__date"><strong>21</strong><span>Saturday<br>November 2026</span></div>
+        <div class="event__body"><span class="event__index">13</span><h3>Grand Reception:</h3><ol class="event__list"><li>Beauty pageant</li><li>Command performance by guest artists</li><li>Award presentation to deserving Nigerians, etc.</li></ol><p class="event__venue">Festival Hall, Oba Palace</p></div>
       </article>
-
-      <article class="event reveal">
-        <div class="event__date">11th October 2026<span>Sunday</span></div>
-        <div>
-          <h3>Novelty Football Match &amp; Golf Tournament Finale</h3>
-          <p class="event__venue">Samuel Ogbemudia Stadium</p>
-          <p>Exciting novelty football match featuring local teams and personalities, combined with the Golf
-            Tournament finale and trophy presentation.</p>
-          <div class="tags"><span>Football Match</span><span>Golf Trophy Presentation</span><span>Awards
-              Ceremony</span><span>Entertainment</span><span>Celebration</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">13th October 2026<span>Tuesday</span></div>
-        <div>
-          <h3>Benin Economic Summit</h3>
-          <p class="event__venue">Conference Hall, Benin City</p>
-          <p>Summit bringing together investors, business leaders, and policymakers to discuss economic growth and
-            investment opportunities in Edo State.</p>
-          <div class="tags"><span>Economic Summit</span><span>Investment</span><span>Business Leaders</span><span>Policy
-              Dialogue</span><span>Panel Sessions</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">14th October 2026<span>Wednesday</span></div>
-        <div>
-          <h3>Children&rsquo;s Day</h3>
-          <p class="event__venue">Cultural Centre</p>
-          <p>A day dedicated to celebrating the children of the Benin Kingdom, featuring performances, games, and
-            activities for the youngest members of the community.</p>
-          <div class="tags"><span>Children&rsquo;s Day</span><span>Youth Celebration</span><span>Performances</span><span>Games</span><span>Community</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">15th October 2026<span>Thursday</span></div>
-        <div>
-          <h3>Benin Security Summit</h3>
-          <p class="event__venue">Conference Hall, Benin City</p>
-          <p>Summit convening security stakeholders and policymakers to address safety, security, and community
-            resilience across Edo State.</p>
-          <div class="tags"><span>Security Summit</span><span>Policy Dialogue</span><span>Community Safety</span><span>Stakeholders</span><span>Panel Sessions</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">16th October 2026<span>Friday</span></div>
-        <div>
-          <h3>Wrestling</h3>
-          <p class="event__venue">Sports Arena, Benin City</p>
-          <p>Traditional and contemporary wrestling competitions showcasing athletic prowess and Edo sporting heritage.
-          </p>
-          <div class="tags"><span>Wrestling Matches</span><span>Traditional Sports</span><span>Athletic
-              Competition</span><span>Championship</span><span>Awards</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">18th October 2026<span>Sunday</span></div>
-        <div>
-          <h3>Football Match at the Stadium</h3>
-          <p class="event__venue">Samuel Ogbemudia Stadium</p>
-          <p>Major football match at the stadium featuring local and regional teams in celebration of the coronation
-            anniversary.</p>
-          <div class="tags"><span>Football Match</span><span>Stadium Event</span><span>Local Teams</span><span>Sports
-              Entertainment</span><span>Community Gathering</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">19th October 2026<span>Monday &middot; Proposed</span></div>
-        <div>
-          <h3>Exhibition of Artefacts by NCMM</h3>
-          <p class="event__venue">National Commission for Museums and Monuments (NCMM)</p>
-          <p>Proposed exhibition showcasing the repatriated Benin Bronzes and other returned artefacts, celebrating the
-            successful repatriation campaign.</p>
-          <div class="tags"><span>Benin Bronzes</span><span>Repatriated Artefacts</span><span>Cultural
-              Heritage</span><span>NCMM Exhibition</span><span>Historical Significance</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">20th October 2026<span>Tuesday</span></div>
-        <div>
-          <h3>Grand Reception</h3>
-          <p class="event__venue">Royal Palace / Festival Hall</p>
-          <p>Grand reception honoring dignitaries, government officials, international guests, and distinguished
-            personalities celebrating the Oba&rsquo;s decade of reign.</p>
-          <div class="tags"><span>Grand Reception</span><span>Dignitaries</span><span>International
-              Guests</span><span>Royal Banquet</span><span>Celebrations</span></div>
-        </div>
-      </article>
-
-      <article class="event reveal">
-        <div class="event__date">25th October 2026<span>Sunday</span></div>
-        <div>
-          <h3>Church Service</h3>
-          <p class="event__venue">Holy Aruosa Cathedral / Major Churches</p>
-          <p>Closing thanksgiving service celebrating the successful 10th Coronation Anniversary and the Oba&rsquo;s
-            reign with prayers and blessings.</p>
-          <div class="tags"><span>Church Service</span><span>Thanksgiving</span><span>Spiritual
-              Celebration</span><span>Blessings</span><span>Community Worship</span></div>
-        </div>
-      </article>
-
     </div>
   </div>
 </section>
@@ -409,28 +274,28 @@ require __DIR__ . '/includes/header.php';
 <section class="section section--royal" id="dates">
   <div class="shell">
     <div class="head reveal">
-      <span class="eyebrow">Important Dates</span>
+      <span class="eyebrow">At a Glance</span>
       <h2>Plan Your Visit</h2>
     </div>
     <div class="grid g3" style="margin-top:3rem">
       <article class="card reveal">
         <span class="card__num">Dates</span>
-        <h3>Opening &amp; Closing</h3>
+        <h3>Programme Period</h3>
         <ul class="infolist" style="margin-top:1rem">
-          <li><span>Opening: October 3</span></li>
-          <li><span>Closing: October 25</span></li>
-          <li><span>14 Major Events</span></li>
-          <li><span>Multiple Daily Activities</span></li>
+          <li><span>Opening: Sunday, 4th Oct 2026</span></li>
+          <li><span>Finale: Saturday, 21st Nov 2026</span></li>
+          <li><span>13 Official Programme Entries</span></li>
+          <li><span>October &amp; November 2026</span></li>
         </ul>
       </article>
       <article class="card reveal" data-d="1">
         <span class="card__num">Locations</span>
         <h3>Venues</h3>
         <ul class="infolist" style="margin-top:1rem">
-          <li><span>Multiple Venues</span></li>
+          <li><span>Oba Palace Grounds</span></li>
           <li><span>Samuel Ogbemudia Stadium</span></li>
-          <li><span>Oba Akenzua Cultural Centre</span></li>
-          <li><span>University of Benin</span></li>
+          <li><span>Oba Akenzua Cultural Center</span></li>
+          <li><span>Benin Golf Club</span></li>
           <li><span>Holy Aruosa Cathedral</span></li>
         </ul>
       </article>
@@ -438,47 +303,11 @@ require __DIR__ . '/includes/header.php';
         <span class="card__num">Contact</span>
         <h3>Anniversary Secretariat</h3>
         <ul class="infolist" style="margin-top:1rem">
-          <li><span>+234 (0) XXX XXXX XXX</span></li>
+          <li><span>+234 (0) 803 040 9997</span></li>
           <li><span>info@beninroyalcourt.com</span></li>
         </ul>
         <p style="margin-top:1.4rem"><a class="textlink" href="#rsvp">RSVP &amp; Contact</a></p>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURED / ANNOUNCEMENTS -->
-<section class="section">
-  <div class="shell">
-    <div class="head reveal">
-      <span class="eyebrow">Featured Information</span>
-      <h2>Latest Announcements</h2>
-    </div>
-    <div class="grid g3" style="margin-top:2.6rem">
-      <div class="notice reveal" data-d="1"><time>17 July 2026</time>
-        <h3>Test Announcement</h3>
-        <p>This is a test announcement for the coronation anniversary.</p>
-      </div>
-      <div class="notice reveal" data-d="2"><time>17 July 2026</time>
-        <h3>Test Announcement</h3>
-        <p>This is a test announcement for the coronation anniversary.</p>
-      </div>
-      <div class="notice reveal" data-d="3"><time>10 May 2026</time>
-        <h3>Test Announcement</h3>
-        <p>This is a test announcement for the coronation anniversary.</p>
-      </div>
-      <div class="notice reveal" data-d="1"><time>10 May 2026</time>
-        <h3>Test Announcement</h3>
-        <p>This is a test announcement for the coronation anniversary.</p>
-      </div>
-      <div class="notice reveal" data-d="2"><time>10 May 2026</time>
-        <h3>Test Announcement</h3>
-        <p>This is a test announcement for the coronation anniversary.</p>
-      </div>
-      <div class="notice reveal" data-d="3"><time>10 May 2026</time>
-        <h3>Test Announcement</h3>
-        <p>This is a test announcement for the coronation anniversary.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -569,9 +398,9 @@ require __DIR__ . '/includes/header.php';
       <h2 style="margin:1rem 0 1.2rem">Join Us in Celebrating a Decade of Excellence</h2>
       <div class="rule"></div>
       <p class="lede">Send your details to the anniversary secretariat to receive information on the programme of events
-        between 3 and 25 October 2026.</p>
+        between 4 October and 21 November 2026.</p>
       <ul class="infolist" style="margin-top:1.6rem">
-        <li><span>+234 (0) XXX XXXX XXX</span></li>
+        <li><span>+234 (0) 803 040 9997</span></li>
         <li><span>info@obabenin.ng</span></li>
       </ul>
     </div>
