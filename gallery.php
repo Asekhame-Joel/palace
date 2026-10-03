@@ -34,33 +34,15 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 
-    <section class="section">
-      <div class="shell">
-<?php if (!empty($categories)): ?>
-        <div class="btn-row gallery-filters reveal" style="margin-bottom:2.4rem" data-gallery-filters>
-          <button type="button" class="btn btn--outline is-active" data-filter="*">All</button>
-<?php foreach ($categories as $cat): ?>
-          <button type="button" class="btn btn--outline" data-filter="<?php echo e($cat); ?>"><?php echo e($cat); ?></button>
-<?php endforeach; ?>
-        </div>
-<?php endif; ?>
-<?php if (empty($images)): ?>
-        <p class="lede">No gallery images have been added yet. Please check back soon.</p>
-<?php else: ?>
-        <div class="masonry" data-lightbox-gallery>
-<?php foreach ($images as $img): ?>
-          <figure class="reveal"<?php echo $img['category'] ? ' data-category="' . e($img['category']) . '"' : ''; ?>>
-            <img src="<?php echo e(UPLOADS_GALLERY_URL . '/' . $img['image']); ?>" alt="<?php echo e($img['title'] ?: 'Royal Palace of Benin'); ?>" loading="lazy" data-lightbox-src="<?php echo e(UPLOADS_GALLERY_URL . '/' . $img['image']); ?>" data-lightbox-caption="<?php echo e($img['title']); ?>">
-            <figcaption><?php echo e($img['title']); ?></figcaption>
-          </figure>
-<?php endforeach; ?>
-        </div>
-<?php endif; ?>
-      </div>
-    </section>
-
 <?php if (!empty($videos)): ?>
-    <section class="section gallery-videos">
+    <nav class="gallery-media-nav" aria-label="Gallery sections">
+      <div class="shell">
+        <a class="is-active" href="#gallery-videos"><span>Watch</span> Videos <b><?php echo count($videos); ?></b></a>
+        <a href="#gallery-photos"><span>Explore</span> Photos <b><?php echo count($images); ?></b></a>
+      </div>
+    </nav>
+
+    <section class="section gallery-videos" id="gallery-videos">
       <div class="shell">
         <div class="gallery-videos__head reveal">
           <div>
@@ -88,6 +70,31 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 <?php endif; ?>
+
+    <section class="section" id="gallery-photos">
+      <div class="shell">
+<?php if (!empty($categories)): ?>
+        <div class="btn-row gallery-filters reveal" style="margin-bottom:2.4rem" data-gallery-filters>
+          <button type="button" class="btn btn--outline is-active" data-filter="*">All</button>
+<?php foreach ($categories as $cat): ?>
+          <button type="button" class="btn btn--outline" data-filter="<?php echo e($cat); ?>"><?php echo e($cat); ?></button>
+<?php endforeach; ?>
+        </div>
+<?php endif; ?>
+<?php if (empty($images)): ?>
+        <p class="lede">No gallery images have been added yet. Please check back soon.</p>
+<?php else: ?>
+        <div class="masonry" data-lightbox-gallery>
+<?php foreach ($images as $img): ?>
+          <figure class="reveal"<?php echo $img['category'] ? ' data-category="' . e($img['category']) . '"' : ''; ?>>
+            <img src="<?php echo e(UPLOADS_GALLERY_URL . '/' . $img['image']); ?>" alt="<?php echo e($img['title'] ?: 'Royal Palace of Benin'); ?>" loading="lazy" data-lightbox-src="<?php echo e(UPLOADS_GALLERY_URL . '/' . $img['image']); ?>" data-lightbox-caption="<?php echo e($img['title']); ?>">
+            <figcaption><?php echo e($img['title']); ?></figcaption>
+          </figure>
+<?php endforeach; ?>
+        </div>
+<?php endif; ?>
+      </div>
+    </section>
 
     <div class="lightbox" id="lightbox" data-lightbox-root hidden>
       <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close">&times;</button>
