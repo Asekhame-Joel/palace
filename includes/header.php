@@ -59,7 +59,7 @@ function nav_current(string $key, string $active): string
         <a href="about.php" <?php echo nav_current('about', $activeNav); ?>>About</a>
         <a href="heritage.php" <?php echo nav_current('heritage', $activeNav); ?>>Heritage</a>
         <a href="council.php" <?php echo nav_current('council', $activeNav); ?>>Council</a>
-        <a href="gallery.php" <?php echo nav_current('gallery', $activeNav); ?>>Gallery</a>
+        <a href="gallery.php" <?php echo nav_current('gallery', $activeNav); ?>>Media</a>
         <a href="news.php" <?php echo nav_current('news', $activeNav); ?>>News</a>
         <a href="contact.php" <?php echo nav_current('contact', $activeNav); ?>>Contact</a>
         <a class="nav__cta" href="anniversary.php">10th Anniversary</a>
@@ -74,7 +74,7 @@ function nav_current(string $key, string $active): string
     <a href="about.php" <?php echo nav_current('about', $activeNav); ?>>About</a>
     <a href="heritage.php" <?php echo nav_current('heritage', $activeNav); ?>>Heritage</a>
     <a href="council.php" <?php echo nav_current('council', $activeNav); ?>>Council</a>
-    <a href="gallery.php" <?php echo nav_current('gallery', $activeNav); ?>>Gallery</a>
+    <a href="gallery.php" <?php echo nav_current('gallery', $activeNav); ?>>Media</a>
     <a href="news.php" <?php echo nav_current('news', $activeNav); ?>>News</a>
     <a href="contact.php" <?php echo nav_current('contact', $activeNav); ?>>Contact</a>
     <a href="anniversary.php">10th Anniversary</a>

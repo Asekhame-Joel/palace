@@ -73,8 +73,13 @@ require __DIR__ . '/includes/header.php';
 
     <section class="section" id="gallery-photos">
       <div class="shell">
+        <div class="gallery-photos__head reveal">
+          <span class="eyebrow">In Pictures</span>
+          <h2>The Palace &amp; Its Treasures</h2>
+          <p class="lede">Explore royal ceremonies, distinguished visitors, palace life, and the enduring visual heritage of the Benin Kingdom.</p>
+        </div>
 <?php if (!empty($categories)): ?>
-        <div class="btn-row gallery-filters reveal" style="margin-bottom:2.4rem" data-gallery-filters>
+        <div class="btn-row gallery-filters reveal" data-gallery-filters>
           <button type="button" class="btn btn--outline is-active" data-filter="*">All</button>
 <?php foreach ($categories as $cat): ?>
           <button type="button" class="btn btn--outline" data-filter="<?php echo e($cat); ?>"><?php echo e($cat); ?></button>
