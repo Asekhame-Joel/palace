@@ -49,7 +49,7 @@ require __DIR__ . '/includes/header.php';
             <span class="eyebrow">Palace on Film</span>
             <h2>Watch Our Stories</h2>
           </div>
-          <p class="lede">Royal ceremonies, heritage, reports, and memorable moments from the Benin Kingdom.</p>
+          <!-- <p class="lede">Royal ceremonies, heritage, reports, and memorable moments from the Benin Kingdom.</p> -->
         </div>
         <div class="video-grid">
 <?php foreach ($videos as $i => $video): ?>
