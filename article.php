@@ -81,10 +81,10 @@ require __DIR__ . '/includes/header.php';
           <?php echo $post['content']; /* stored as sanitized HTML from the admin editor */ ?>
 <?php endif; ?>
 <?php if (($isImageOnly || $isMixed) && !empty($articleImages)): ?>
-          <div class="article-news-gallery<?php echo count($articleImages) === 1 ? ' article-news-gallery--single' : ''; ?>">
+          <div class="article-news-gallery<?php echo count($articleImages) === 1 ? ' article-news-gallery--single' : ''; ?>" data-lightbox-gallery>
 <?php foreach ($articleImages as $index => $image): ?>
             <figure>
-              <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $image); ?>" alt="<?php echo e($post['title'] . (count($articleImages) > 1 ? ' - image ' . ($index + 1) : '')); ?>" loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
+              <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $image); ?>" alt="<?php echo e($post['title'] . (count($articleImages) > 1 ? ' - image ' . ($index + 1) : '')); ?>" loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>" data-lightbox-src="<?php echo e(UPLOADS_NEWS_URL . '/' . $image); ?>" data-lightbox-caption="<?php echo e($post['title'] . (count($articleImages) > 1 ? ' - image ' . ($index + 1) : '')); ?>">
             </figure>
 <?php endforeach; ?>
           </div>
@@ -115,4 +115,11 @@ require __DIR__ . '/includes/header.php';
       </div>
     </section>
 <?php endif; ?>
+    <div class="lightbox" id="lightbox" data-lightbox-root hidden>
+      <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close">&times;</button>
+      <figure>
+        <img src="" alt="" data-lightbox-image>
+        <figcaption data-lightbox-figcaption></figcaption>
+      </figure>
+    </div>
 <?php require __DIR__ . '/includes/footer.php'; ?>
