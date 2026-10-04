@@ -9,9 +9,9 @@ $ogImage = 'assets/images/hero-palace.jpg';
 $activeNav = 'home';
 $useImageLogo = true;
 
-$latestNews = db()->query("SELECT title, slug, excerpt, category, published_at FROM news
+$latestNews = db()->query("SELECT title, slug, excerpt, featured_image, post_type, category, published_at FROM news
                             WHERE status = 'published' AND published_at <= NOW()
-                            ORDER BY published_at DESC LIMIT 3")->fetchAll();
+                            ORDER BY published_at DESC LIMIT 4")->fetchAll();
 
 $previewGallery = db()->query("SELECT title, image FROM gallery
                                 WHERE status = 'active'
@@ -219,40 +219,36 @@ require __DIR__ . '/includes/header.php';
 <!-- NEWS -->
 <section class="section section--cream">
   <div class="shell">
-    <div class="head reveal">
-      <span class="eyebrow">From the Palace Court</span>
-      <h2>Latest News &amp; Events</h2>
-      <p class="lede">Anniversary news, cultural celebrations, royal events, and heritage preservation activities of
-        the Benin Kingdom.</p>
+    <div class="home-news__heading reveal">
+      <div>
+        <span class="eyebrow">From the Palace Court</span>
+        <h2>Latest News &amp; Events</h2>
+      </div>
+      <span class="home-news__rule" aria-hidden="true"></span>
+      <a class="textlink home-news__all" href="news.php">View All News</a>
     </div>
-    <div class="grid g3" style="margin-top:3rem">
+    <div class="home-news__grid">
       <?php if (empty($latestNews)): ?>
-        <article class="card reveal"><span class="card__num">Anniversary &middot; Coming Season</span>
-          <h3>Royal Anniversary Procession Announced</h3>
-          <p>His Royal Majesty&rsquo;s grand commemorative procession to honour the kingdom&rsquo;s enduring legacy.
-          </p>
-          <p style="margin-top:1.2rem"><a class="textlink" href="news.php">Read More</a></p>
-        </article>
-        <article class="card reveal" data-d="1"><span class="card__num">Cultural Festival &middot; Festival
-            Season</span>
-          <h3>Annual Cultural Festival Returns</h3>
-          <p>Traditional music, dance, and storytelling unite the people of Benin in joyous celebration.</p>
-          <p style="margin-top:1.2rem"><a class="textlink" href="news.php">Read More</a></p>
-        </article>
-        <article class="card reveal" data-d="2"><span class="card__num">Heritage Preservation &middot; Ongoing</span>
-          <h3>Restoration of Royal Bronze Collection</h3>
-          <p>A renewed initiative to preserve and document the priceless artistic legacy of the kingdom.</p>
-          <p style="margin-top:1.2rem"><a class="textlink" href="news.php">Read More</a></p>
-        </article>
+        <div class="home-news__empty reveal">
+          <p>No palace news has been published yet.</p>
+          <a class="textlink" href="news.php">Visit the News page</a>
+        </div>
       <?php else: ?>
         <?php foreach ($latestNews as $i => $post): ?>
-          <article class="card reveal" <?php echo $i > 0 ? ' data-d="' . $i . '"' : ''; ?>><span
-              class="card__num"><?php echo e($post['category'] ?: 'Palace News'); ?> &middot;
-              <?php echo e(format_date($post['published_at'])); ?></span>
-            <h3><?php echo e($post['title']); ?></h3>
-            <p><?php echo e($post['excerpt'] ?: excerpt_from_text($post['title'], 20)); ?></p>
-            <p style="margin-top:1.2rem"><a class="textlink"
-                href="article.php?slug=<?php echo urlencode($post['slug']); ?>">Read More</a></p>
+          <article class="home-news-card reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 4) . '"' : ''; ?>>
+            <a class="home-news-card__image" href="article.php?slug=<?php echo urlencode($post['slug']); ?>">
+              <img src="<?php echo e($post['featured_image'] ? UPLOADS_NEWS_URL . '/' . $post['featured_image'] : 'assets/images/anniversary.jpg'); ?>" alt="<?php echo e($post['title']); ?>" loading="lazy">
+            </a>
+            <div class="home-news-card__body">
+              <p class="home-news-card__meta">
+                <time datetime="<?php echo e(date('Y-m-d', strtotime($post['published_at']))); ?>"><?php echo e(format_date($post['published_at'])); ?></time>
+                <span aria-hidden="true">/</span>
+                <?php echo e($post['category'] ?: 'Palace News'); ?>
+              </p>
+              <h3><a href="article.php?slug=<?php echo urlencode($post['slug']); ?>"><?php echo e($post['title']); ?></a></h3>
+              <p class="home-news-card__excerpt"><?php echo e($post['excerpt'] ?: excerpt_from_text($post['title'], 20)); ?></p>
+              <a class="btn btn--royal home-news-card__button" href="article.php?slug=<?php echo urlencode($post['slug']); ?>">Read More</a>
+            </div>
           </article>
         <?php endforeach; ?>
       <?php endif; ?>
