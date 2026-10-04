@@ -95,7 +95,7 @@ require __DIR__ . '/includes/header.php';
       </div>
     </div>
     <div class="stats reveal" style="margin-top:4rem">
-      <div><b data-count="13">13</b><span>Official Programme Entries</span></div>
+      <div><b data-count="14">14</b><span>Official Programme Entries</span></div>
       <div><b data-count="2">2</b><span>Months of Celebration</span></div>
       <div><b data-count="119">119</b><span>Artefacts Returned, 2025</span></div>
       <div><b data-count="800" data-suffix="+">800+</b><span>Years of Tradition</span></div>

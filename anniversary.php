@@ -238,33 +238,37 @@ require __DIR__ . '/includes/header.php';
         <div class="event__date"><strong>12</strong><span>Monday<br>October 2026</span></div>
         <div class="event__body"><span class="event__index">06</span><h3>Oba Erediauwa Memorial Lecture, Luncheon</h3><p class="event__venue">Akin Deko Main Auditorium, University of Benin</p></div>
       </article>
+      <article class="event event--courtesy reveal">
+        <div class="event__date"><strong>15</strong><span>Thursday<br>October 2026</span></div>
+        <div class="event__body"><span class="event__index">07</span><h3>Special Courtesy Visit to HRM OBA EWUARE II by Her Excellency, Senator Oluremi Tinubu, CON, First Lady of the Federal Republic of Nigeria In Commemoration of the Coronation Anniversary</h3><p class="event__venue">Audience Hall, Oba Palace</p></div>
+      </article>
       <article class="event reveal">
         <div class="event__date"><strong>16</strong><span>Friday<br>October 2026</span></div>
-        <div class="event__body"><span class="event__index">07</span><h3>Wrestling/Palace Football Match, Luncheon</h3><p class="event__venue">Oba Palace Grounds</p></div>
+        <div class="event__body"><span class="event__index">08</span><h3>Wrestling/Palace Football Match, Luncheon</h3><p class="event__venue">Oba Palace Grounds</p></div>
       </article>
       <article class="event reveal" data-d="1">
         <div class="event__date"><strong>17</strong><span>Saturday<br>October 2026</span></div>
-        <div class="event__body"><span class="event__index">08</span><h3>Chess Tournament (Sir Victor Uwaifo Creative Hub), Children's Day (Oba Akenzua Cultural Center), Luncheon</h3><p class="event__venue">Sir Victor Uwaifo Creative Hub / Oba Akenzua Cultural Center</p></div>
+        <div class="event__body"><span class="event__index">09</span><h3>Chess Tournament (Sir Victor Uwaifo Creative Hub), Children's Day (Oba Akenzua Cultural Center), Luncheon</h3><p class="event__venue">Sir Victor Uwaifo Creative Hub / Oba Akenzua Cultural Center</p></div>
       </article>
       <article class="event event--featured reveal">
         <div class="event__date"><strong>20</strong><span>Tuesday<br>October 2026</span></div>
-        <div class="event__body"><span class="event__index">09</span><h3>Daytime/Evening: Official Commissioning of the Festival Hall, Thanksgiving, Reception of Traditional Rulers of Benin Extraction, Luncheon, Cultural Evening, and Fireworks</h3><p class="event__venue">Holy Aruosa Cathedral &amp; Palace Grounds</p><div class="event__night"><b>Night (6:00 PM)</b><p>music festival featuring Shallipopi as guest artist.</p><span>UNIBEN Sports Complex</span></div></div>
+        <div class="event__body"><span class="event__index">10</span><span class="event__kicker">The Coronation Anniversary Day</span><h3>Daytime/Evening: Official Commissioning of the Festival Hall, Thanksgiving, Luncheon, Cultural Evening, and Fireworks</h3><p class="event__venue">Holy Aruosa Cathedral &amp; Palace Grounds</p><div class="event__night"><b>Night (6:00 PM)</b><p>music festival featuring Shallipopi as guest artist.</p><span>UNIBEN Sports Complex</span></div></div>
       </article>
       <article class="event reveal" data-d="1">
         <div class="event__date"><strong>24</strong><span>Saturday<br>October 2026</span></div>
-        <div class="event__body"><span class="event__index">10</span><h3>Durbar, Luncheon</h3><p class="event__venue">Garrick Memorial School Ground</p></div>
+        <div class="event__body"><span class="event__index">11</span><h3>Durbar, Luncheon</h3><p class="event__venue">Garrick Memorial School Ground</p></div>
       </article>
       <article class="event reveal">
         <div class="event__date event__date--range"><strong>27-31</strong><span>Tue - Sat<br>October 2026</span></div>
-        <div class="event__body"><span class="event__index">11</span><h3>Golf Tournament, Luncheon</h3><p class="event__venue">Benin Golf Club</p></div>
+        <div class="event__body"><span class="event__index">12</span><h3>Golf Tournament, Luncheon</h3><p class="event__venue">Benin Golf Club</p></div>
       </article>
       <article class="event event--wide reveal" data-d="1">
         <div class="event__date event__date--range"><strong>19-21</strong><span>Thu - Sat<br>November 2026</span></div>
-        <div class="event__body"><span class="event__index">12</span><h3>Exhibition of Artefacts by NCMM, Luncheon</h3><p class="event__venue">National Museum Ground, King's Square, Benin City</p></div>
+        <div class="event__body"><span class="event__index">13</span><h3>Exhibition of Artefacts by NCMM, Luncheon</h3><p class="event__venue">National Museum Ground, King's Square, Benin City</p></div>
       </article>
       <article class="event event--finale reveal">
         <div class="event__date"><strong>21</strong><span>Saturday<br>November 2026</span></div>
-        <div class="event__body"><span class="event__index">13</span><h3>Grand Reception:</h3><ol class="event__list"><li>Beauty pageant</li><li>Command performance by guest artists</li><li>Award presentation to deserving Nigerians, etc.</li></ol><p class="event__venue">Festival Hall, Oba Palace</p></div>
+        <div class="event__body"><span class="event__index">14</span><h3>Grand Reception:</h3><ol class="event__list"><li>Beauty pageant</li><li>Command performance by guest artists</li><li>Award presentation to deserving Nigerians, etc.</li></ol><p class="event__venue">Festival Hall, Oba Palace</p></div>
       </article>
     </div>
   </div>
@@ -284,7 +288,7 @@ require __DIR__ . '/includes/header.php';
         <ul class="infolist" style="margin-top:1rem">
           <li><span>Opening: Sunday, 4th Oct 2026</span></li>
           <li><span>Finale: Saturday, 21st Nov 2026</span></li>
-          <li><span>13 Official Programme Entries</span></li>
+          <li><span>14 Official Programme Entries</span></li>
           <li><span>October &amp; November 2026</span></li>
         </ul>
       </article>

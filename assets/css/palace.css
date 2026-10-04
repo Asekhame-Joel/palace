@@ -1299,12 +1299,29 @@ body.menu-open .drawer {
 }
 
 .event--wide,
+.event--courtesy,
 .event--featured,
 .event--finale { grid-column: 1 / -1; }
 
 .event--wide .event__body,
+.event--courtesy .event__body,
 .event--featured .event__body,
 .event--finale .event__body { padding-block: 2rem; }
+
+.event--courtesy {
+  border-color: rgba(201, 162, 39, .65);
+  background: linear-gradient(120deg, rgba(201, 162, 39, .12), rgba(255, 255, 255, .82));
+}
+
+.event__kicker {
+  display: block;
+  margin: -.15rem 0 .7rem;
+  color: var(--burgundy-700);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
 
 .event--featured .event__date,
 .event--finale .event__date {
