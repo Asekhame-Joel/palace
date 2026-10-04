@@ -18,8 +18,16 @@ if ($id > 0) {
     $row = $stmt->fetch();
 
     if ($row) {
+        $imagesStmt = db()->prepare('SELECT image FROM news_images WHERE news_id = :id');
+        $imagesStmt->execute(['id' => $id]);
+        $attachedImages = $imagesStmt->fetchAll(PDO::FETCH_COLUMN);
         db()->prepare('DELETE FROM news WHERE id = :id')->execute(['id' => $id]);
         delete_upload(UPLOADS_NEWS_PATH, $row['featured_image']);
+        foreach ($attachedImages as $image) {
+            if ($image !== $row['featured_image']) {
+                delete_upload(UPLOADS_NEWS_PATH, $image);
+            }
+        }
         flash_set('success', 'News post deleted.');
     } else {
         flash_set('error', 'News post not found.');

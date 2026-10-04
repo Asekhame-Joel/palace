@@ -36,6 +36,14 @@ if (!$post) {
 
 $isImageOnly = ($post['post_type'] ?? 'standard') === 'image';
 $isTextOnly = ($post['post_type'] ?? 'standard') === 'text';
+$isMixed = ($post['post_type'] ?? 'standard') === 'mixed';
+
+$imageStmt = db()->prepare('SELECT image FROM news_images WHERE news_id = :news_id ORDER BY sort_order, id');
+$imageStmt->execute(['news_id' => $post['id']]);
+$articleImages = $imageStmt->fetchAll(PDO::FETCH_COLUMN);
+if (empty($articleImages) && $post['featured_image'] && $isImageOnly) {
+    $articleImages[] = $post['featured_image'];
+}
 $featuredImageUrl = $post['featured_image'] && !$isTextOnly && !$isImageOnly
     ? UPLOADS_NEWS_URL . '/' . $post['featured_image']
     : 'assets/images/anniversary.jpg';
@@ -69,12 +77,17 @@ require __DIR__ . '/includes/header.php';
     <section class="section">
       <div class="shell" style="max-width:780px">
         <div class="reveal" style="font-size:1.08rem;line-height:1.85;color:var(--ink-70,#3a3a3a)">
-<?php if ($isImageOnly && $post['featured_image']): ?>
-          <figure class="article-image-only">
-            <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $post['featured_image']); ?>" alt="<?php echo e($post['title']); ?>">
-          </figure>
-<?php else: ?>
+<?php if (!$isImageOnly): ?>
           <?php echo $post['content']; /* stored as sanitized HTML from the admin editor */ ?>
+<?php endif; ?>
+<?php if (($isImageOnly || $isMixed) && !empty($articleImages)): ?>
+          <div class="article-news-gallery<?php echo count($articleImages) === 1 ? ' article-news-gallery--single' : ''; ?>">
+<?php foreach ($articleImages as $index => $image): ?>
+            <figure>
+              <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $image); ?>" alt="<?php echo e($post['title'] . (count($articleImages) > 1 ? ' - image ' . ($index + 1) : '')); ?>" loading="<?php echo $index === 0 ? 'eager' : 'lazy'; ?>">
+            </figure>
+<?php endforeach; ?>
+          </div>
 <?php endif; ?>
         </div>
         <div class="btn-row" style="margin-top:2.6rem"><a class="btn btn--outline" href="news.php">&larr; Back to All News</a></div>

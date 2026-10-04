@@ -20,6 +20,10 @@ if (!$post) {
     redirect('/admin/news/index.php');
 }
 
+$imageStmt = db()->prepare('SELECT id, image, sort_order FROM news_images WHERE news_id = :news_id ORDER BY sort_order, id');
+$imageStmt->execute(['news_id' => $id]);
+$newsImages = $imageStmt->fetchAll();
+
 $errors = [];
 $values = [
     'title'        => $post['title'],
@@ -40,12 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $values['title']        = trim((string) ($_POST['title'] ?? ''));
     $values['excerpt']      = trim((string) ($_POST['excerpt'] ?? ''));
     $values['content']      = trim((string) ($_POST['content'] ?? ''));
-    $values['post_type']    = in_array(($_POST['post_type'] ?? 'text'), ['standard', 'text', 'image'], true) ? $_POST['post_type'] : 'text';
+    $values['post_type']    = in_array(($_POST['post_type'] ?? 'text'), ['standard', 'text', 'image', 'mixed'], true) ? $_POST['post_type'] : 'text';
     $values['category']     = trim((string) ($_POST['category'] ?? ''));
     $values['author']       = trim((string) ($_POST['author'] ?? ''));
     $values['status']       = ($_POST['status'] ?? 'draft') === 'published' ? 'published' : 'draft';
     $values['published_at'] = trim((string) ($_POST['published_at'] ?? ''));
     $removeImage             = !empty($_POST['remove_image']);
+    $removeImageIds          = array_values(array_filter(array_map('intval', (array) ($_POST['remove_news_images'] ?? []))));
 
     if ($values['title'] === '' || mb_strlen($values['title']) > 255) {
         $errors[] = 'Please enter a title (up to 255 characters).';
@@ -57,16 +62,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'The excerpt must be under 500 characters.';
     }
 
-    $newImage = null;
-    if ($values['post_type'] !== 'text' && !empty($_FILES['featured_image']['name'])) {
-        try {
-            $newImage = handle_image_upload($_FILES['featured_image'], UPLOADS_NEWS_PATH);
-        } catch (RuntimeException $ex) {
-            $errors[] = $ex->getMessage();
+    $newImages = [];
+    $newImageFiles = normalize_uploaded_files($_FILES['news_images'] ?? null);
+    $keptNewsImages = array_values(array_filter($newsImages, static fn(array $image): bool => !in_array((int) $image['id'], $removeImageIds, true)));
+    $legacyImageAvailable = empty($newsImages) && !empty($post['featured_image']) && !$removeImage;
+    if (count($keptNewsImages) + count($newImageFiles) > 12) {
+        $errors[] = 'You can keep or upload up to 12 images per news post.';
+    } elseif ($values['post_type'] !== 'text') {
+        foreach ($newImageFiles as $file) {
+            try {
+                $newImages[] = handle_image_upload($file, UPLOADS_NEWS_PATH);
+            } catch (RuntimeException $ex) {
+                $errors[] = ($file['name'] ?: 'Image') . ': ' . $ex->getMessage();
+            }
         }
     }
-    if ($values['post_type'] === 'image' && $newImage === null && (!$post['featured_image'] || $removeImage)) {
-        $errors[] = 'Please upload an image for an image-only news post.';
+    if (in_array($values['post_type'], ['image', 'mixed'], true) && !$legacyImageAvailable && empty($keptNewsImages) && empty($newImages)) {
+        $errors[] = 'Please keep or upload at least one image for this news format.';
+    }
+    if (!empty($errors) && !empty($newImages)) {
+        foreach ($newImages as $image) {
+            delete_upload(UPLOADS_NEWS_PATH, $image);
+        }
+        $newImages = [];
     }
 
     if (empty($errors)) {
@@ -87,17 +105,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ? strip_tags($values['content'], '<p><br><strong><b><em><i><ul><ol><li><a><h2><h3><h4><blockquote>')
             : '';
 
-        $finalImage = $post['featured_image'];
-        if ($newImage) {
+        if ($removeImage && empty($newsImages)) {
             delete_upload(UPLOADS_NEWS_PATH, $post['featured_image']);
-            $finalImage = $newImage;
-        } elseif ($removeImage) {
-            delete_upload(UPLOADS_NEWS_PATH, $post['featured_image']);
-            $finalImage = null;
         }
-        if ($values['post_type'] === 'text') {
-            $finalImage = null;
+
+        if (!empty($removeImageIds)) {
+            $removeStmt = db()->prepare('DELETE FROM news_images WHERE id = :id AND news_id = :news_id');
+            foreach ($newsImages as $image) {
+                if (in_array((int) $image['id'], $removeImageIds, true)) {
+                    delete_upload(UPLOADS_NEWS_PATH, $image['image']);
+                    $removeStmt->execute(['id' => $image['id'], 'news_id' => $id]);
+                }
+            }
         }
+
+        if (!empty($newImages)) {
+            $nextOrder = (int) db()->query('SELECT COALESCE(MAX(sort_order), -1) + 1 FROM news_images WHERE news_id = ' . $id)->fetchColumn();
+            $addImageStmt = db()->prepare('INSERT INTO news_images (news_id, image, sort_order, created_at) VALUES (:news_id, :image, :sort_order, NOW())');
+            foreach ($newImages as $image) {
+                $addImageStmt->execute(['news_id' => $id, 'image' => $image, 'sort_order' => $nextOrder++]);
+            }
+        }
+
+        $coverStmt = db()->prepare('SELECT image FROM news_images WHERE news_id = :news_id ORDER BY sort_order, id LIMIT 1');
+        $coverStmt->execute(['news_id' => $id]);
+        $galleryCover = $coverStmt->fetchColumn();
+        $finalImage = $values['post_type'] === 'text' ? null : ($galleryCover ?: ($removeImage ? null : $post['featured_image']));
 
         $upd = db()->prepare('UPDATE news SET title=:title, slug=:slug, excerpt=:excerpt, content=:content,
                                featured_image=:image, post_type=:post_type, category=:category, author=:author, status=:status,
@@ -145,11 +178,12 @@ require __DIR__ . '/../../includes/admin_header.php';
               <select id="post_type" name="post_type">
                 <option value="text" <?php echo $values['post_type'] === 'text' ? 'selected' : ''; ?>>Text only</option>
                 <option value="image" <?php echo $values['post_type'] === 'image' ? 'selected' : ''; ?>>Image only</option>
+                <option value="mixed" <?php echo $values['post_type'] === 'mixed' ? 'selected' : ''; ?>>Text and multiple images</option>
 <?php if (($post['post_type'] ?? 'standard') === 'standard'): ?>
                 <option value="standard" <?php echo $values['post_type'] === 'standard' ? 'selected' : ''; ?>>Image and text (existing layout)</option>
 <?php endif; ?>
               </select>
-              <p class="hint">Choose whether the article displays written content or one complete, uncropped image.</p>
+              <p class="hint">Choose text, images, or a complete article containing text and an image gallery.</p>
             </div>
             <div class="a-field" data-news-text-field>
               <label for="content">Article Content</label>
@@ -183,8 +217,17 @@ require __DIR__ . '/../../includes/admin_header.php';
               </div>
             </div>
             <div class="a-field" data-news-image-field>
-              <label>News Image</label>
-<?php if ($post['featured_image']): ?>
+              <label>News Images</label>
+<?php if (!empty($newsImages)): ?>
+              <div class="a-news-images">
+<?php foreach ($newsImages as $image): ?>
+                <label class="a-news-image">
+                  <img src="/<?php echo e(UPLOADS_NEWS_URL . '/' . $image['image']); ?>" alt="">
+                  <span><input type="checkbox" name="remove_news_images[]" value="<?php echo (int) $image['id']; ?>"> Remove</span>
+                </label>
+<?php endforeach; ?>
+              </div>
+<?php elseif ($post['featured_image']): ?>
               <div class="a-current-image">
                 <img src="/<?php echo e(UPLOADS_NEWS_URL . '/' . $post['featured_image']); ?>" alt="">
                 <label style="font-weight:400;display:flex;align-items:center;gap:.4rem">
@@ -192,8 +235,8 @@ require __DIR__ . '/../../includes/admin_header.php';
                 </label>
               </div>
 <?php endif; ?>
-              <input type="file" id="featured_image" name="featured_image" accept="image/jpeg,image/png,image/webp,image/gif">
-              <p class="hint">Upload a new image to replace the current one. The full image is centered without cropping. Max 5MB.</p>
+              <input type="file" id="news_images" name="news_images[]" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+              <p class="hint">Add more images (up to 12 total). The first retained image is used as the cover.</p>
             </div>
             <button class="a-btn" type="submit">Save Changes</button>
             <a class="a-btn outline" href="/admin/news/index.php">Cancel</a>
@@ -204,15 +247,16 @@ require __DIR__ . '/../../includes/admin_header.php';
               const textField = document.querySelector('[data-news-text-field]');
               const imageField = document.querySelector('[data-news-image-field]');
               const content = document.getElementById('content');
-              const image = document.getElementById('featured_image');
-              const hasCurrentImage = <?php echo $post['featured_image'] ? 'true' : 'false'; ?>;
+              const image = document.getElementById('news_images');
+              const hasCurrentImage = <?php echo ($post['featured_image'] || !empty($newsImages)) ? 'true' : 'false'; ?>;
               const update = () => {
                 const imageOnly = type.value === 'image';
                 const standard = type.value === 'standard';
+                const mixed = type.value === 'mixed';
                 textField.hidden = imageOnly;
-                imageField.hidden = !imageOnly && !standard;
+                imageField.hidden = !imageOnly && !standard && !mixed;
                 content.required = !imageOnly;
-                image.required = imageOnly && !hasCurrentImage;
+                image.required = (imageOnly || mixed) && !hasCurrentImage;
               };
               type.addEventListener('change', update);
               update();

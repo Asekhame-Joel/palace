@@ -200,6 +200,29 @@ function delete_upload(string $dir, ?string $filename): void
     }
 }
 
+/** Convert a multiple-file upload field into normal single-file arrays. */
+function normalize_uploaded_files(?array $files): array
+{
+    if (!$files || !isset($files['name']) || !is_array($files['name'])) {
+        return [];
+    }
+
+    $normalized = [];
+    foreach ($files['name'] as $i => $name) {
+        if (($files['error'][$i] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
+            continue;
+        }
+        $normalized[] = [
+            'name' => $name,
+            'type' => $files['type'][$i] ?? '',
+            'tmp_name' => $files['tmp_name'][$i] ?? '',
+            'error' => $files['error'][$i] ?? UPLOAD_ERR_NO_FILE,
+            'size' => $files['size'][$i] ?? 0,
+        ];
+    }
+    return $normalized;
+}
+
 /** Extract a YouTube video ID from a standard, shortened, Shorts, live, or embed URL. */
 function youtube_video_id(string $url): ?string
 {

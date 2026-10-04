@@ -48,7 +48,7 @@ require __DIR__ . '/includes/header.php';
         <div class="grid g3">
 <?php foreach ($posts as $i => $post): ?>
           <article class="card reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?>>
-<?php if (($post['post_type'] ?? 'standard') === 'image' && $post['featured_image']): ?>
+<?php if (in_array(($post['post_type'] ?? 'standard'), ['image', 'mixed'], true) && $post['featured_image']): ?>
             <a class="news-card__image" href="article.php?slug=<?php echo urlencode($post['slug']); ?>">
               <img src="<?php echo e(UPLOADS_NEWS_URL . '/' . $post['featured_image']); ?>" alt="<?php echo e($post['title']); ?>" loading="lazy">
             </a>

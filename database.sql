@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS news (
     excerpt        VARCHAR(500) DEFAULT NULL,
     content        MEDIUMTEXT NOT NULL,
     featured_image VARCHAR(255) DEFAULT NULL,
-    post_type      ENUM('standard','text','image') NOT NULL DEFAULT 'standard',
+    post_type      ENUM('standard','text','image','mixed') NOT NULL DEFAULT 'standard',
     category       VARCHAR(100) DEFAULT NULL,
     author         VARCHAR(150) DEFAULT NULL,
     status         ENUM('draft','published') NOT NULL DEFAULT 'draft',
@@ -41,6 +41,19 @@ CREATE TABLE IF NOT EXISTS news (
     UNIQUE KEY uq_news_slug (slug),
     KEY idx_news_status_published (status, published_at),
     KEY idx_news_category (category)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- -----------------------------------------------------------------
+-- Table: news_images (multiple images attached to one news article)
+-- -----------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS news_images (
+    id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    news_id    INT UNSIGNED NOT NULL,
+    image      VARCHAR(255) NOT NULL,
+    sort_order INT UNSIGNED NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_news_images_news FOREIGN KEY (news_id) REFERENCES news(id) ON DELETE CASCADE,
+    KEY idx_news_images_order (news_id, sort_order, id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- -----------------------------------------------------------------

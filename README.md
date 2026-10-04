@@ -36,6 +36,10 @@ The linked YouTube gallery requires
 video links from **Admin → Gallery → YouTube Videos**; thumbnails are loaded
 automatically from YouTube and video files are never uploaded to the site.
 
+News posts containing text and multiple images require
+`migrations/2026-10-04-news-multiple-images.sql`. The first selected image is
+used as the cover and up to 12 images can be attached to one article.
+
 ## 3. Configuration
 
 Open `includes/config.php` and set your real database credentials, or
