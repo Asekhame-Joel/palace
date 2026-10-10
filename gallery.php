@@ -54,12 +54,13 @@ require __DIR__ . '/includes/header.php';
         <div class="video-grid">
 <?php foreach ($videos as $i => $video): ?>
 <?php if ($video['video_type'] === 'upload'): ?>
-          <article class="video-card video-card--upload reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?>>
+          <article class="video-card video-card--upload reveal" data-uploaded-video<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?>>
             <span class="video-card__media">
-              <video controls preload="metadata" poster="<?php echo e(UPLOADS_VIDEO_URL . '/' . $video['thumbnail']); ?>" aria-label="<?php echo e($video['title']); ?>">
+              <video controls playsinline preload="metadata" poster="<?php echo e(UPLOADS_VIDEO_URL . '/' . $video['thumbnail']); ?>" aria-label="<?php echo e($video['title']); ?>" data-video-element>
                 <source src="<?php echo e(UPLOADS_VIDEO_URL . '/' . $video['video_file']); ?>" type="<?php echo e(video_mime_type($video['video_file'])); ?>">
                 Your browser does not support embedded video playback.
               </video>
+              <button class="video-card__play video-card__play--local" type="button" aria-label="Play <?php echo e($video['title']); ?>" data-video-play><span aria-hidden="true"></span></button>
               <span class="video-card__source">Palace Video</span>
             </span>
             <span class="video-card__body">

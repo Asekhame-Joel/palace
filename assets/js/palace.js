@@ -190,4 +190,31 @@
       if (ev.key === "Escape") closeLightbox();
     });
   }
+
+  /* Uploaded gallery videos: large, reliable click-to-play control. */
+  document.querySelectorAll("[data-uploaded-video]").forEach(function (card) {
+    var video = card.querySelector("[data-video-element]");
+    var playButton = card.querySelector("[data-video-play]");
+    if (!video || !playButton) return;
+
+    playButton.addEventListener("click", function () {
+      var playRequest = video.play();
+      if (playRequest && typeof playRequest.catch === "function") {
+        playRequest.catch(function () {
+          card.classList.remove("is-playing");
+        });
+      }
+    });
+
+    video.addEventListener("playing", function () {
+      card.classList.add("is-playing");
+    });
+    video.addEventListener("pause", function () {
+      card.classList.remove("is-playing");
+    });
+    video.addEventListener("ended", function () {
+      card.classList.remove("is-playing");
+      video.load();
+    });
+  });
 })();

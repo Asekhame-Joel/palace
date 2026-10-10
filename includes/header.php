@@ -38,7 +38,7 @@ function nav_current(string $key, string $active): string
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/palace.css">
+  <link rel="stylesheet" href="assets/css/palace.css?v=<?php echo (int) @filemtime(BASE_PATH . '/assets/css/palace.css'); ?>">
 </head>
 
 <body>

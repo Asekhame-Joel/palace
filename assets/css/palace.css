@@ -2267,6 +2267,23 @@ body.menu-open .drawer {
   background: #090706;
 }
 
+.video-card__play--local {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.video-card--upload.is-playing .video-card__play--local,
+.video-card--upload.is-playing .video-card__source {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video-card__play--local,
+.video-card--upload .video-card__source {
+  transition: opacity .25s ease, transform .35s var(--ease), background .35s var(--ease);
+}
+
 .video-card--upload .video-card__source {
   pointer-events: none;
   text-shadow: 0 1px 4px rgba(0, 0, 0, .8);

@@ -53,7 +53,7 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/palace.js" defer></script>
+<script src="assets/js/palace.js?v=<?php echo (int) @filemtime(BASE_PATH . '/assets/js/palace.js'); ?>" defer></script>
 </body>
 
 </html>

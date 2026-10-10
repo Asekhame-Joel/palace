@@ -15,3 +15,16 @@
 </FilesMatch>
 
 Options -Indexes -ExecCGI
+
+# Ensure shared hosting serves uploaded media with browser-playable MIME types.
+<IfModule mod_mime.c>
+    AddType video/mp4 .mp4
+    AddType video/webm .webm
+    AddType video/ogg .ogv .ogg
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(mp4|webm|ogv|ogg)$">
+        Header set Accept-Ranges "bytes"
+    </FilesMatch>
+</IfModule>
