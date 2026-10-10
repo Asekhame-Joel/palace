@@ -4,6 +4,13 @@
  */
 require_once __DIR__ . '/config.php';
 
+// Video-media defaults live here because production config.php is intentionally
+// excluded from version control and may not yet contain the newer constants.
+defined('UPLOADS_VIDEO_PATH') || define('UPLOADS_VIDEO_PATH', BASE_PATH . '/uploads/videos');
+defined('UPLOADS_VIDEO_URL') || define('UPLOADS_VIDEO_URL', 'uploads/videos');
+defined('MAX_VIDEO_UPLOAD_BYTES') || define('MAX_VIDEO_UPLOAD_BYTES', 150 * 1024 * 1024);
+defined('ALLOWED_VIDEO_MIME') || define('ALLOWED_VIDEO_MIME', ['video/mp4', 'video/webm', 'video/ogg', 'application/ogg']);
+
 /** Escape a string for safe HTML output. */
 function e(?string $value): string
 {
@@ -186,6 +193,69 @@ function handle_image_upload(array $file, string $targetDir): string
     chmod($destination, 0644);
 
     return $filename;
+}
+
+/**
+ * Validate and move a browser-compatible uploaded video.
+ * Returns the generated filename or throws RuntimeException.
+ */
+function handle_video_upload(array $file, string $targetDir): string
+{
+    if (!isset($file['error']) || is_array($file['error'])) {
+        throw new RuntimeException('Invalid video upload parameters.');
+    }
+
+    switch ($file['error']) {
+        case UPLOAD_ERR_OK:
+            break;
+        case UPLOAD_ERR_NO_FILE:
+            throw new RuntimeException('No video file was uploaded.');
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            throw new RuntimeException('The video is larger than the server upload limit.');
+        default:
+            throw new RuntimeException('Video upload failed. Please try again.');
+    }
+
+    if ((int) $file['size'] <= 0 || (int) $file['size'] > MAX_VIDEO_UPLOAD_BYTES) {
+        throw new RuntimeException('The video must be no larger than 150MB.');
+    }
+
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($file['tmp_name']);
+    if (!in_array($mime, ALLOWED_VIDEO_MIME, true)) {
+        throw new RuntimeException('Unsupported video type. Allowed: MP4, WEBM, or OGG.');
+    }
+
+    $extMap = [
+        'video/mp4'       => 'mp4',
+        'video/webm'      => 'webm',
+        'video/ogg'       => 'ogv',
+        'application/ogg' => 'ogv',
+    ];
+    $filename = bin2hex(random_bytes(16)) . '.' . $extMap[$mime];
+
+    if (!is_dir($targetDir) && !mkdir($targetDir, 0755, true) && !is_dir($targetDir)) {
+        throw new RuntimeException('Could not create the video upload directory.');
+    }
+
+    $destination = rtrim($targetDir, '/') . '/' . $filename;
+    if (!move_uploaded_file($file['tmp_name'], $destination)) {
+        throw new RuntimeException('Could not save the uploaded video.');
+    }
+    chmod($destination, 0644);
+
+    return $filename;
+}
+
+/** Return the correct HTML5 source MIME type for a stored video filename. */
+function video_mime_type(string $filename): string
+{
+    return match (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
+        'webm' => 'video/webm',
+        'ogv', 'ogg' => 'video/ogg',
+        default => 'video/mp4',
+    };
 }
 
 /** Delete an uploaded file if it exists, ignoring errors. */

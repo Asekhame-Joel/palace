@@ -4,7 +4,7 @@
  * Requires: require_login() already called by the including page.
  * Expected variables:
  *   $adminPageTitle string
- *   $activeAdminNav string one of: dashboard, news, news-add, gallery, gallery-upload, gallery-videos, messages, settings
+ *   $activeAdminNav string one of: dashboard, news, news-add, gallery, gallery-upload, gallery-videos, gallery-video-upload, messages, settings
  *
  * NOTE: paths here are root-relative (/admin/..., /assets/...) which assumes
  * the site is deployed at the web root of its domain/subdomain — the normal
@@ -52,7 +52,8 @@ function admin_nav_class(string $key, string $active): string
           <div class="admin-nav-group__label">Gallery</div>
           <a href="/admin/gallery/index.php"<?php echo admin_nav_class('gallery', $activeAdminNav); ?>>All Images</a>
           <a href="/admin/gallery/upload.php"<?php echo admin_nav_class('gallery-upload', $activeAdminNav); ?>>Upload Images</a>
-          <a href="/admin/gallery/videos.php"<?php echo admin_nav_class('gallery-videos', $activeAdminNav); ?>>YouTube Videos</a>
+          <a href="/admin/gallery/videos.php"<?php echo admin_nav_class('gallery-videos', $activeAdminNav); ?>>All Videos</a>
+          <a href="/admin/gallery/video-upload.php"<?php echo admin_nav_class('gallery-video-upload', $activeAdminNav); ?>>Upload Video</a>
         </div>
 
         <div class="admin-nav-group">

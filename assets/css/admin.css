@@ -102,6 +102,13 @@ a { color: inherit; }
 }
 .a-card h2 { font-size: 1.02rem; margin: 0 0 1rem; }
 
+.a-page-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.a-page-head h2 { margin: 0; font-size: 1.15rem; }
+.a-page-head .hint { margin: .25rem 0 0; color: var(--a-ink-60); font-size: .84rem; }
+
 /* Buttons */
 .a-btn {
   display: inline-flex; align-items: center; gap: .4rem;
@@ -125,6 +132,7 @@ a { color: inherit; }
 .a-field input[type=password],
 .a-field input[type=date],
 .a-field input[type=datetime-local],
+.a-field input[type=url],
 .a-field select,
 .a-field textarea {
   width: 100%; padding: .6rem .7rem; border: 1px solid var(--a-border); border-radius: 8px;
@@ -136,6 +144,9 @@ a { color: inherit; }
 }
 .a-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.2rem; }
 @media (max-width: 700px) { .a-form-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .a-page-head { align-items: flex-start; flex-direction: column; }
+}
 
 /* Tables */
 .a-table { width: 100%; border-collapse: collapse; font-size: .88rem; }

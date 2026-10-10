@@ -11,7 +11,7 @@ $activeNav       = 'gallery';
 $images = db()->query("SELECT id, title, description, image, category FROM gallery
                         WHERE status = 'active' ORDER BY created_at DESC")->fetchAll();
 
-$videos = db()->query("SELECT title, youtube_id, youtube_url FROM gallery_videos
+$videos = db()->query("SELECT title, video_type, description, youtube_id, youtube_url, video_file, thumbnail FROM gallery_videos
                         WHERE status = 'active' ORDER BY created_at DESC")->fetchAll();
 
 $categories = [];
@@ -53,6 +53,24 @@ require __DIR__ . '/includes/header.php';
         </div>
         <div class="video-grid">
 <?php foreach ($videos as $i => $video): ?>
+<?php if ($video['video_type'] === 'upload'): ?>
+          <article class="video-card video-card--upload reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?>>
+            <span class="video-card__media">
+              <video controls preload="metadata" poster="<?php echo e(UPLOADS_VIDEO_URL . '/' . $video['thumbnail']); ?>" aria-label="<?php echo e($video['title']); ?>">
+                <source src="<?php echo e(UPLOADS_VIDEO_URL . '/' . $video['video_file']); ?>" type="<?php echo e(video_mime_type($video['video_file'])); ?>">
+                Your browser does not support embedded video playback.
+              </video>
+              <span class="video-card__source">Palace Video</span>
+            </span>
+            <span class="video-card__body">
+              <span class="video-card__label">Royal Palace Video</span>
+              <strong><?php echo e($video['title']); ?></strong>
+<?php if ($video['description']): ?>
+              <span class="video-card__description"><?php echo nl2br(e($video['description'])); ?></span>
+<?php endif; ?>
+            </span>
+          </article>
+<?php else: ?>
           <a class="video-card reveal"<?php echo $i > 0 ? ' data-d="' . ($i % 3) . '"' : ''; ?> href="<?php echo e($video['youtube_url']); ?>" target="_blank" rel="noopener noreferrer" aria-label="Watch <?php echo e($video['title']); ?> on YouTube">
             <span class="video-card__media">
               <img src="https://i.ytimg.com/vi/<?php echo e($video['youtube_id']); ?>/hqdefault.jpg" alt="<?php echo e($video['title']); ?>" loading="lazy">
@@ -65,6 +83,7 @@ require __DIR__ . '/includes/header.php';
               <span class="video-card__watch">Watch on YouTube <span aria-hidden="true">&#8599;</span></span>
             </span>
           </a>
+<?php endif; ?>
 <?php endforeach; ?>
         </div>
       </div>

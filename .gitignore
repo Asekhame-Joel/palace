@@ -4,7 +4,9 @@
 # User uploaded files
 /uploads/gallery/*
 /uploads/news/*
+/uploads/videos/*
 
 # Keep upload directories
 !/uploads/gallery/.gitkeep
 !/uploads/news/.gitkeep
+!/uploads/videos/.gitkeep

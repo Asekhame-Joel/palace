@@ -9,6 +9,7 @@ require_login();
 $totalNews     = (int) db()->query("SELECT COUNT(*) FROM news")->fetchColumn();
 $publishedNews = (int) db()->query("SELECT COUNT(*) FROM news WHERE status = 'published'")->fetchColumn();
 $totalGallery  = (int) db()->query("SELECT COUNT(*) FROM gallery")->fetchColumn();
+$totalVideos   = (int) db()->query("SELECT COUNT(*) FROM gallery_videos")->fetchColumn();
 $unreadMsgs    = (int) db()->query("SELECT COUNT(*) FROM messages WHERE status = 'unread'")->fetchColumn();
 
 $recentNews = db()->query("SELECT title, slug, status, published_at, created_at FROM news ORDER BY created_at DESC LIMIT 5")->fetchAll();
@@ -22,6 +23,7 @@ require __DIR__ . '/../includes/admin_header.php';
           <div class="a-stat"><b><?php echo $totalNews; ?></b><span>Total News Posts</span></div>
           <div class="a-stat"><b><?php echo $publishedNews; ?></b><span>Published News</span></div>
           <div class="a-stat"><b><?php echo $totalGallery; ?></b><span>Gallery Images</span></div>
+          <div class="a-stat"><b><?php echo $totalVideos; ?></b><span>Gallery Videos</span></div>
           <div class="a-stat"><b><?php echo $unreadMsgs; ?></b><span>Unread Messages</span></div>
         </div>
 

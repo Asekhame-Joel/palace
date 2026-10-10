@@ -28,7 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'delete') {
         $id = (int) ($_POST['id'] ?? 0);
+        $stmt = db()->prepare('SELECT video_type, video_file, thumbnail FROM gallery_videos WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        $video = $stmt->fetch();
         db()->prepare('DELETE FROM gallery_videos WHERE id = :id')->execute(['id' => $id]);
+        if ($video && $video['video_type'] === 'upload') {
+            delete_upload(UPLOADS_VIDEO_PATH, $video['video_file']);
+            delete_upload(UPLOADS_VIDEO_PATH, $video['thumbnail']);
+        }
         flash_set('success', 'Video removed from the gallery.');
         redirect('/admin/gallery/videos.php');
     }
@@ -46,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         try {
-            $stmt = db()->prepare('INSERT INTO gallery_videos (title, youtube_id, youtube_url, status, created_at)
-                                   VALUES (:title, :youtube_id, :youtube_url, "active", NOW())');
+            $stmt = db()->prepare('INSERT INTO gallery_videos (title, video_type, youtube_id, youtube_url, status, created_at)
+                                   VALUES (:title, "youtube", :youtube_id, :youtube_url, "active", NOW())');
             $stmt->execute([
                 'title' => $values['title'],
                 'youtube_id' => $youtubeId,
@@ -65,12 +72,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$videos = db()->query('SELECT id, title, youtube_id, youtube_url, status, created_at FROM gallery_videos ORDER BY created_at DESC')->fetchAll();
+$videos = db()->query('SELECT id, title, video_type, description, youtube_id, youtube_url, video_file, thumbnail, status, created_at
+                       FROM gallery_videos ORDER BY created_at DESC')->fetchAll();
 
-$adminPageTitle = 'YouTube Videos';
+$adminPageTitle = 'All Videos';
 $activeAdminNav = 'gallery-videos';
 require __DIR__ . '/../../includes/admin_header.php';
 ?>
+        <div class="a-page-head">
+          <div>
+            <h2>Gallery Videos</h2>
+            <p class="hint">Manage uploaded Palace videos and linked YouTube videos in one place.</p>
+          </div>
+          <a class="a-btn" href="/admin/gallery/video-upload.php">+ Upload Video</a>
+        </div>
+
         <div class="a-card" style="margin-bottom:1.5rem">
           <h2 style="margin-top:0">Add a YouTube Video</h2>
           <p class="hint">Paste the YouTube link. The thumbnail is created automatically; no video file is uploaded.</p>
@@ -95,17 +111,25 @@ require __DIR__ . '/../../includes/admin_header.php';
         </div>
 
         <div class="a-card">
-          <h2 style="margin-top:0">Gallery Videos</h2>
+          <h2 style="margin-top:0">Published &amp; Hidden Videos</h2>
 <?php if (empty($videos)): ?>
-          <p class="a-empty">No YouTube videos have been added yet.</p>
+          <p class="a-empty">No videos have been added yet.</p>
 <?php else: ?>
           <table class="a-table">
-            <thead><tr><th>Thumbnail</th><th>Title</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+            <thead><tr><th>Thumbnail</th><th>Title</th><th>Type</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
             <tbody>
 <?php foreach ($videos as $video): ?>
               <tr>
-                <td><img class="thumb" src="https://i.ytimg.com/vi/<?php echo e($video['youtube_id']); ?>/hqdefault.jpg" alt=""></td>
-                <td><a href="<?php echo e($video['youtube_url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo e($video['title']); ?></a></td>
+                <td><img class="thumb" src="<?php echo $video['video_type'] === 'upload' ? '/' . e(UPLOADS_VIDEO_URL . '/' . $video['thumbnail']) : 'https://i.ytimg.com/vi/' . e($video['youtube_id']) . '/hqdefault.jpg'; ?>" alt=""></td>
+                <td>
+<?php if ($video['video_type'] === 'youtube'): ?>
+                  <a href="<?php echo e($video['youtube_url']); ?>" target="_blank" rel="noopener noreferrer"><?php echo e($video['title']); ?></a>
+<?php else: ?>
+                  <strong><?php echo e($video['title']); ?></strong>
+<?php if ($video['description']): ?><div class="hint"><?php echo e(excerpt_from_text($video['description'], 14)); ?></div><?php endif; ?>
+<?php endif; ?>
+                </td>
+                <td><span class="a-badge"><?php echo $video['video_type'] === 'upload' ? 'Uploaded' : 'YouTube'; ?></span></td>
                 <td><span class="a-badge <?php echo e($video['status']); ?>"><?php echo e(ucfirst($video['status'])); ?></span></td>
                 <td><?php echo e(format_date($video['created_at'])); ?></td>
                 <td class="actions">

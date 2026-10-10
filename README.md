@@ -40,6 +40,11 @@ News posts containing text and multiple images require
 `migrations/2026-10-04-news-multiple-images.sql`. The first selected image is
 used as the cover and up to 12 images can be attached to one article.
 
+Uploading video files requires
+`migrations/2026-10-10-gallery-video-uploads.sql`. After importing it, use
+**Admin → Gallery → Upload Video** to add the video, title, caption, thumbnail,
+and publishing status. Existing YouTube entries continue to work unchanged.
+
 ## 3. Configuration
 
 Open `includes/config.php` and set your real database credentials, or
@@ -80,16 +85,23 @@ must deploy into a subfolder, you'll need to adjust the root-relative
 `/admin/...` and `/assets/...` links in `includes/admin_header.php`,
 `includes/header.php`/`footer.php`, and the admin pages.
 
-Make sure `uploads/news/` and `uploads/gallery/` are writable by PHP
+Make sure `uploads/news/`, `uploads/gallery/`, and `uploads/videos/` are writable by PHP
 (755 or 775 depending on your host).
+
+The application accepts uploaded videos up to 150MB. Your hosting account's
+PHP `upload_max_filesize` and `post_max_size` settings must also be at least
+150MB (set `post_max_size` slightly higher, such as 160MB). On cPanel this is
+normally configured under **MultiPHP INI Editor**. MP4 is recommended for the
+widest browser support.
 
 ## 6. What's dynamic vs. static
 
 - **News** (`news.php`, `article.php`) — fully dynamic from the `news` table,
   manageable at `/admin/news/`. Falls back to the original 3 sample cards on
   the homepage if the database is empty, so the site never looks broken.
-- **Gallery** (`gallery.php`) — fully dynamic from the `gallery` table,
-  manageable at `/admin/gallery/`. I added a lightweight click-to-enlarge
+- **Media** (`gallery.php`) — dynamic photos, YouTube links, and uploaded videos,
+  manageable at `/admin/gallery/`. Uploaded videos use responsive native
+  playback with their saved thumbnail and caption. Photos include a click-to-enlarge
   lightbox and category filter buttons (your original had neither) — these
   are additive only; nothing in your existing CSS/JS was overwritten.
 - **Contact form + Anniversary RSVP form** — both now really submit, via
